@@ -1,13 +1,15 @@
-package com.example.roadsensebackend;
+package com.roadsense;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@MapperScan(basePackages = "com.roadsense.mapper")
 @SpringBootApplication
-public class RoadsenseBackendApplication {
+public class Main {
 
     public static void main(String[] args) {
-        SpringApplication.run(RoadsenseBackendApplication.class, args);
+        SpringApplication.run(Main.class, args);
     }
 
 }

@@ -1,10 +1,10 @@
-package com.example.roadsensebackend;
+package com.roadsense;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RoadsenseBackendApplicationTests {
+class MainTests {
 
     @Test
     void contextLoads() {

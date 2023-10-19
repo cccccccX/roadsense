@@ -1,7 +1,5 @@
 package com.roadsense.service.impl;
 
-import com.roadsense.mapper.UserMapper;
-import com.roadsense.pojo.User;
 import com.roadsense.service.UserService;
 import com.roadsense.utils.Result;
 import com.roadsense.utils.ResultCodeEnum;
@@ -21,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result login(User user) {
+
         User loginUser = userMapper.selectByUserName(user.getUserName());
         if (loginUser == null) {
             return Result.build(null, ResultCodeEnum.USERNAME_ERROR);

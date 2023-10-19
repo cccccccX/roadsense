@@ -5,61 +5,55 @@
 <mapper namespace="com.roadsense.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.roadsense.pojo.User">
-            <id property="userId" column="user_id" jdbcType="INTEGER"/>
+            <id property="userId" column="user_id" jdbcType="BIGINT"/>
             <result property="userName" column="user_name" jdbcType="VARCHAR"/>
             <result property="userPwd" column="user_pwd" jdbcType="VARCHAR"/>
-            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
             <result property="userTel" column="user_tel" jdbcType="VARCHAR"/>
+            <result property="isManager" column="is_manager" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         user_id,user_name,user_pwd,
-        nickname,user_tel
+        user_tel,is_manager
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from user
-        where  user_id = #{userId,jdbcType=INTEGER} 
-    </select>
-    <select id="selectByUserName" resultType="com.roadsense.pojo.User">
-        select
-        <include refid="Base_Column_List" />
-        from user
-        where  user_name = #{userName,jdbcType=VARCHAR}
+        from t_user
+        where  user_id = #{userId,jdbcType=BIGINT} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from user
-        where  user_id = #{userId,jdbcType=INTEGER} 
+        delete from t_user
+        where  user_id = #{userId,jdbcType=BIGINT} 
     </delete>
     <insert id="insert" keyColumn="user_id" keyProperty="userId" parameterType="com.roadsense.pojo.User" useGeneratedKeys="true">
-        insert into user
+        insert into t_user
         ( user_id,user_name,user_pwd
-        ,nickname,user_tel)
-        values (#{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR},#{userPwd,jdbcType=VARCHAR}
-        ,#{nickname,jdbcType=VARCHAR},#{userTel,jdbcType=VARCHAR})
+        ,user_tel,is_manager)
+        values (#{userId,jdbcType=BIGINT},#{userName,jdbcType=VARCHAR},#{userPwd,jdbcType=VARCHAR}
+        ,#{userTel,jdbcType=VARCHAR},#{isManager,jdbcType=TINYINT})
     </insert>
     <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="com.roadsense.pojo.User" useGeneratedKeys="true">
-        insert into user
+        insert into t_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="userId != null">user_id,</if>
                 <if test="userName != null">user_name,</if>
                 <if test="userPwd != null">user_pwd,</if>
-                <if test="nickname != null">nickname,</if>
                 <if test="userTel != null">user_tel,</if>
+                <if test="isManager != null">is_manager,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-                <if test="userId != null">#{userId,jdbcType=INTEGER},</if>
+                <if test="userId != null">#{userId,jdbcType=BIGINT},</if>
                 <if test="userName != null">#{userName,jdbcType=VARCHAR},</if>
                 <if test="userPwd != null">#{userPwd,jdbcType=VARCHAR},</if>
-                <if test="nickname != null">#{nickname,jdbcType=VARCHAR},</if>
                 <if test="userTel != null">#{userTel,jdbcType=VARCHAR},</if>
+                <if test="isManager != null">#{isManager,jdbcType=TINYINT},</if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.roadsense.pojo.User">
-        update user
+        update t_user
         <set>
                 <if test="userName != null">
                     user_name = #{userName,jdbcType=VARCHAR},
@@ -67,22 +61,22 @@
                 <if test="userPwd != null">
                     user_pwd = #{userPwd,jdbcType=VARCHAR},
                 </if>
-                <if test="nickname != null">
-                    nickname = #{nickname,jdbcType=VARCHAR},
-                </if>
                 <if test="userTel != null">
                     user_tel = #{userTel,jdbcType=VARCHAR},
                 </if>
+                <if test="isManager != null">
+                    is_manager = #{isManager,jdbcType=TINYINT},
+                </if>
         </set>
-        where   user_id = #{userId,jdbcType=INTEGER} 
+        where   user_id = #{userId,jdbcType=BIGINT} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.roadsense.pojo.User">
-        update user
+        update t_user
         set 
             user_name =  #{userName,jdbcType=VARCHAR},
             user_pwd =  #{userPwd,jdbcType=VARCHAR},
-            nickname =  #{nickname,jdbcType=VARCHAR},
-            user_tel =  #{userTel,jdbcType=VARCHAR}
-        where   user_id = #{userId,jdbcType=INTEGER} 
+            user_tel =  #{userTel,jdbcType=VARCHAR},
+            is_manager =  #{isManager,jdbcType=TINYINT}
+        where   user_id = #{userId,jdbcType=BIGINT} 
     </update>
 </mapper>

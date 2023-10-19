@@ -4,8 +4,8 @@ import com.roadsense.pojo.User;
 
 /**
 * @author c'c'c'c'c'c'x
-* @description 针对表【user】的数据库操作Mapper
-* @createDate 2023-10-15 12:01:27
+* @description 针对表【t_user】的数据库操作Mapper
+* @createDate 2023-10-19 15:17:15
 * @Entity com.roadsense.pojo.User
 */
 public interface UserMapper {
@@ -16,8 +16,7 @@ public interface UserMapper {
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer id);
-    User selectByUserName(String userName);
+    User selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(User record);
 

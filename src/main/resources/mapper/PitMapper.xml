@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.roadsense.mapper.PitMapper">
+
+    <resultMap id="BaseResultMap" type="com.roadsense.pojo.Pit">
+            <id property="pitId" column="pit_id" jdbcType="BIGINT"/>
+            <result property="roadId" column="road_id" jdbcType="BIGINT"/>
+            <result property="img" column="img" jdbcType="VARCHAR"/>
+            <result property="gps" column="gps" jdbcType="VARCHAR"/>
+            <result property="degree" column="degree" jdbcType="VARCHAR"/>
+            <result property="recRate" column="rec_rate" jdbcType="VARCHAR"/>
+            <result property="category" column="category" jdbcType="VARCHAR"/>
+            <result property="dataSource" column="data_source" jdbcType="VARCHAR"/>
+            <result property="notes" column="notes" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        pit_id,road_id,img,
+        gps,degree,rec_rate,
+        category,data_source,notes
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_pit
+        where  pit_id = #{pitId,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_pit
+        where  pit_id = #{pitId,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="pit_id" keyProperty="pitId" parameterType="com.roadsense.pojo.Pit" useGeneratedKeys="true">
+        insert into t_pit
+        ( pit_id,road_id,img
+        ,gps,degree,rec_rate
+        ,category,data_source,notes
+        )
+        values (#{pitId,jdbcType=BIGINT},#{roadId,jdbcType=BIGINT},#{img,jdbcType=VARCHAR}
+        ,#{gps,jdbcType=VARCHAR},#{degree,jdbcType=VARCHAR},#{recRate,jdbcType=VARCHAR}
+        ,#{category,jdbcType=VARCHAR},#{dataSource,jdbcType=VARCHAR},#{notes,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="pit_id" keyProperty="pitId" parameterType="com.roadsense.pojo.Pit" useGeneratedKeys="true">
+        insert into t_pit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="pitId != null">pit_id,</if>
+                <if test="roadId != null">road_id,</if>
+                <if test="img != null">img,</if>
+                <if test="gps != null">gps,</if>
+                <if test="degree != null">degree,</if>
+                <if test="recRate != null">rec_rate,</if>
+                <if test="category != null">category,</if>
+                <if test="dataSource != null">data_source,</if>
+                <if test="notes != null">notes,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="pitId != null">#{pitId,jdbcType=BIGINT},</if>
+                <if test="roadId != null">#{roadId,jdbcType=BIGINT},</if>
+                <if test="img != null">#{img,jdbcType=VARCHAR},</if>
+                <if test="gps != null">#{gps,jdbcType=VARCHAR},</if>
+                <if test="degree != null">#{degree,jdbcType=VARCHAR},</if>
+                <if test="recRate != null">#{recRate,jdbcType=VARCHAR},</if>
+                <if test="category != null">#{category,jdbcType=VARCHAR},</if>
+                <if test="dataSource != null">#{dataSource,jdbcType=VARCHAR},</if>
+                <if test="notes != null">#{notes,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.roadsense.pojo.Pit">
+        update t_pit
+        <set>
+                <if test="roadId != null">
+                    road_id = #{roadId,jdbcType=BIGINT},
+                </if>
+                <if test="img != null">
+                    img = #{img,jdbcType=VARCHAR},
+                </if>
+                <if test="gps != null">
+                    gps = #{gps,jdbcType=VARCHAR},
+                </if>
+                <if test="degree != null">
+                    degree = #{degree,jdbcType=VARCHAR},
+                </if>
+                <if test="recRate != null">
+                    rec_rate = #{recRate,jdbcType=VARCHAR},
+                </if>
+                <if test="category != null">
+                    category = #{category,jdbcType=VARCHAR},
+                </if>
+                <if test="dataSource != null">
+                    data_source = #{dataSource,jdbcType=VARCHAR},
+                </if>
+                <if test="notes != null">
+                    notes = #{notes,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   pit_id = #{pitId,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.roadsense.pojo.Pit">
+        update t_pit
+        set 
+            road_id =  #{roadId,jdbcType=BIGINT},
+            img =  #{img,jdbcType=VARCHAR},
+            gps =  #{gps,jdbcType=VARCHAR},
+            degree =  #{degree,jdbcType=VARCHAR},
+            rec_rate =  #{recRate,jdbcType=VARCHAR},
+            category =  #{category,jdbcType=VARCHAR},
+            data_source =  #{dataSource,jdbcType=VARCHAR},
+            notes =  #{notes,jdbcType=VARCHAR}
+        where   pit_id = #{pitId,jdbcType=BIGINT} 
+    </update>
+</mapper>

@@ -24,6 +24,27 @@ public class UserController {
 //    public User getUser(@PathVariable("id") Long id){
 //        return userMapper.selectByPrimaryKey(id);
 //    }
+    /**
+     * 登录需求
+     * 地址: /user/login
+     * 方式: post
+     * @param{
+     *     "userId":"xcc",
+     *     "userPwd":"cc20021010"
+     *     “isManager":"true"
+     * }
+     * @return{
+     *     "code": 200,
+     *     "message": "success",
+     *     "data": {
+     *         "userId": 1,
+     *         "userName": "xcc",
+     *         "userPwd": "cc20021010",
+     *         "nickname": "cherry",
+     *         "userTel": "15057554044"
+     *     }
+     * }
+     */
     @PostMapping("login")
     public Result login(@RequestBody User user){
         System.out.println("success");

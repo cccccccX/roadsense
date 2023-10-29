@@ -1,6 +1,7 @@
 package com.roadsense.mapper;
 
 import com.roadsense.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author c'c'c'c'c'c'x
@@ -8,6 +9,7 @@ import com.roadsense.pojo.User;
 * @createDate 2023-10-19 15:17:15
 * @Entity com.roadsense.pojo.User
 */
+@Mapper
 public interface UserMapper {
 
     int deleteByPrimaryKey(Long id);
@@ -21,5 +23,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectByUserName(String username);
 
 }

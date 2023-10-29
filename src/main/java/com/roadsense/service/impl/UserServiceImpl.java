@@ -1,5 +1,7 @@
 package com.roadsense.service.impl;
 
+import com.roadsense.mapper.UserMapper;
+import com.roadsense.pojo.User;
 import com.roadsense.service.UserService;
 import com.roadsense.utils.Result;
 import com.roadsense.utils.ResultCodeEnum;
@@ -17,6 +19,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
+    /**
+     * 登录操作，根据用户名查询
+     * @param user
+     * @return
+     */
     @Override
     public Result login(User user) {
 
@@ -30,6 +38,12 @@ public class UserServiceImpl implements UserService {
         return Result.build(null, ResultCodeEnum.PASSWORD_ERROR);
     }
 
+
+    /**
+     * 检查用户名是否存在
+     * @param username
+     * @return
+     */
     @Override
     public Result checkUserName(String username) {
         User user = userMapper.selectByUserName(username);
@@ -39,6 +53,12 @@ public class UserServiceImpl implements UserService {
         return Result.build(null,ResultCodeEnum.USERNAME_USED);
     }
 
+
+    /**
+     * 注册，添加用户
+     * @param user
+     * @return
+     */
     @Override
     public Result regist(User user) {
         User existUser = userMapper.selectByUserName(user.getUserName());

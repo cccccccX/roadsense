@@ -1,5 +1,6 @@
 package com.roadsense.service;
 
+import com.roadsense.pojo.User;
 import com.roadsense.utils.Result;
 
 /**

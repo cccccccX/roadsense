@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2023-10-14 20:34
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("/users")
 public class UserController {
 
 
@@ -45,21 +45,23 @@ public class UserController {
      *     }
      * }
      */
-    @PostMapping("login")
+
+    @GetMapping
     public Result login(@RequestBody User user){
         System.out.println("success");
         Result result = userService.login(user);
         System.out.println("result = " + result);
         return result;
     }
-    @PostMapping("checkUserName")
-    public Result checkUserName(String username){
+
+    @GetMapping("/{username}")
+    public Result checkUserName(@PathVariable String username){
         Result result = userService.checkUserName(username);
         return result;
     }
 
 
-    @PostMapping("regist")
+    @PostMapping
     public Result regist(@RequestBody User user){
         Result result = userService.regist(user);
         return result;

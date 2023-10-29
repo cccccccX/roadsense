@@ -61,7 +61,7 @@ public class UserController {
     }
 
 
-    @PostMapping
+    @PutMapping
     public Result regist(@RequestBody User user){
         Result result = userService.regist(user);
         return result;

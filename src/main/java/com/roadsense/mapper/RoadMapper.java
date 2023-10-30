@@ -1,6 +1,8 @@
 package com.roadsense.mapper;
 
 import com.roadsense.pojo.Road;
+import com.roadsense.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author c'c'c'c'c'c'x
@@ -8,18 +10,23 @@ import com.roadsense.pojo.Road;
 * @createDate 2023-10-19 15:17:15
 * @Entity com.roadsense.pojo.Road
 */
+@Mapper
 public interface RoadMapper {
 
-    int deleteByPrimaryKey(Long id);
+//    int deleteByPrimaryKey(Long id);
+//
+//    int insert(Road record);
+//
+//    int insertSelective(Road record);
+//
+//    Road selectByPrimaryKey(Long id);
+//
+//    int updateByPrimaryKeySelective(Road record);
+//
+//    int updateByPrimaryKey(Road record);
 
-    int insert(Road record);
+    public int deleteById(Long id);
 
-    int insertSelective(Road record);
-
-    Road selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Road record);
-
-    int updateByPrimaryKey(Road record);
+    public int insert(Road road);
 
 }

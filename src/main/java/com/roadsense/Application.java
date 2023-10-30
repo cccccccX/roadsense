@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 @MapperScan(basePackages = "com.roadsense.mapper")
 @SpringBootApplication
+
 public class Application extends WebMvcConfigurationSupport {
 
     @Autowired
@@ -21,6 +22,6 @@ public class Application extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/users");
+//        registry.addInterceptor(loginInterceptor).addPathPatterns("/users");
     }
 }

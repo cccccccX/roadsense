@@ -3,8 +3,13 @@ package com.roadsense.controller;
 import com.roadsense.pojo.User;
 import com.roadsense.service.UserService;
 import com.roadsense.utils.Result;
+import com.roadsense.utils.CodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 /**
  * @author chaochao Xv
@@ -47,10 +52,17 @@ public class UserController {
      */
 
     @GetMapping
-    public Result login(@RequestBody User user){
+    public Result login(@RequestBody User user, HttpSession session){
         System.out.println("success");
         Result result = userService.login(user);
+
+        if (Objects.equals(result.getCode(), CodeEnum.SUCCESS.getCode())){
+            User user1 = (User) result.getData();
+            session.setAttribute("user",user1);
+        }
+
         System.out.println("result = " + result);
+
         return result;
     }
 
@@ -66,4 +78,20 @@ public class UserController {
         Result result = userService.regist(user);
         return result;
     }
+
+    @PostMapping
+    @Transactional
+    public Result modifyPassword(@RequestBody User user,HttpSession session){
+        User user1 = (User) session.getAttribute("user");
+        if (user1 == null){
+            return new Result(CodeEnum.NOTLOGIN.getCode(), null,CodeEnum.NOTLOGIN.getMessage());
+        }
+        boolean flag = userService.modifyPassword(user);
+        if (flag){
+            return new Result(CodeEnum.SUCCESS.getCode(), null,CodeEnum.SUCCESS.getMessage());
+        }else{
+            return new Result(CodeEnum.FAILED.getCode(), null,"修改失败~请重试");
+        }
+    }
+
 }

@@ -4,7 +4,7 @@ import com.roadsense.mapper.UserMapper;
 import com.roadsense.pojo.User;
 import com.roadsense.service.UserService;
 import com.roadsense.utils.Result;
-import com.roadsense.utils.ResultCodeEnum;
+import com.roadsense.utils.CodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,12 +30,12 @@ public class UserServiceImpl implements UserService {
 
         User loginUser = userMapper.selectByUserName(user.getUserName());
         if (loginUser == null) {
-            return Result.build(null, ResultCodeEnum.USERNAME_ERROR);
+            return Result.build(null, CodeEnum.USERNAME_ERROR);
         }
         if (user.getUserPwd().equals(loginUser.getUserPwd())) {
             return Result.ok(loginUser);
         }
-        return Result.build(null, ResultCodeEnum.PASSWORD_ERROR);
+        return Result.build(null, CodeEnum.PASSWORD_ERROR);
     }
 
 
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return Result.ok(null);
         }
-        return Result.build(null,ResultCodeEnum.USERNAME_USED);
+        return Result.build(null, CodeEnum.USERNAME_USED);
     }
 
 
@@ -63,11 +63,23 @@ public class UserServiceImpl implements UserService {
     public Result regist(User user) {
         User existUser = userMapper.selectByUserName(user.getUserName());
         if (existUser != null) {
-            return Result.build(null,ResultCodeEnum.USERNAME_USED);
+            return Result.build(null, CodeEnum.USERNAME_USED);
         }
 
         userMapper.insert(user);
 
         return Result.ok(null);
+    }
+
+
+    /**
+     * 修改密码
+     * @param user
+     * @return
+     */
+    @Override
+    public boolean modifyPassword(User user) {
+        int i = userMapper.updatePassword(user);
+        return i == 1;
     }
 }

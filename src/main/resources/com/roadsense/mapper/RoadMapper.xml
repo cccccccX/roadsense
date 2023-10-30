@@ -12,71 +12,85 @@
             <result property="notes" column="notes" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        road_id,road_name,pit_amount,
-        healthy_exp,notes
-    </sql>
+    <insert id="insert">
+        INSERT INTO t_roadinfo
+        VALUES(#{roadName},#{pitAmount},#{healthyExp},#{notes})
+    </insert>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from t_road
-        where  road_id = #{roadId,jdbcType=BIGINT} 
-    </select>
-
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from t_road
-        where  road_id = #{roadId,jdbcType=BIGINT} 
+    <delete id="deleteById">
+        DELETE FROM t_roadinfo
+        WHERE road_id = #{roadId}
     </delete>
-    <insert id="insert" keyColumn="road_id" keyProperty="roadId" parameterType="com.roadsense.pojo.Road" useGeneratedKeys="true">
-        insert into t_road
-        ( road_id,road_name,pit_amount
-        ,healthy_exp,notes)
-        values (#{roadId,jdbcType=BIGINT},#{roadName,jdbcType=VARCHAR},#{pitAmount,jdbcType=INTEGER}
-        ,#{healthyExp,jdbcType=FLOAT},#{notes,jdbcType=VARCHAR})
-    </insert>
-    <insert id="insertSelective" keyColumn="road_id" keyProperty="roadId" parameterType="com.roadsense.pojo.Road" useGeneratedKeys="true">
-        insert into t_road
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="roadId != null">road_id,</if>
-                <if test="roadName != null">road_name,</if>
-                <if test="pitAmount != null">pit_amount,</if>
-                <if test="healthyExp != null">healthy_exp,</if>
-                <if test="notes != null">notes,</if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-                <if test="roadId != null">#{roadId,jdbcType=BIGINT},</if>
-                <if test="roadName != null">#{roadName,jdbcType=VARCHAR},</if>
-                <if test="pitAmount != null">#{pitAmount,jdbcType=INTEGER},</if>
-                <if test="healthyExp != null">#{healthyExp,jdbcType=FLOAT},</if>
-                <if test="notes != null">#{notes,jdbcType=VARCHAR},</if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.roadsense.pojo.Road">
-        update t_road
-        <set>
-                <if test="roadName != null">
-                    road_name = #{roadName,jdbcType=VARCHAR},
-                </if>
-                <if test="pitAmount != null">
-                    pit_amount = #{pitAmount,jdbcType=INTEGER},
-                </if>
-                <if test="healthyExp != null">
-                    healthy_exp = #{healthyExp,jdbcType=FLOAT},
-                </if>
-                <if test="notes != null">
-                    notes = #{notes,jdbcType=VARCHAR},
-                </if>
-        </set>
-        where   road_id = #{roadId,jdbcType=BIGINT} 
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.roadsense.pojo.Road">
-        update t_road
-        set 
-            road_name =  #{roadName,jdbcType=VARCHAR},
-            pit_amount =  #{pitAmount,jdbcType=INTEGER},
-            healthy_exp =  #{healthyExp,jdbcType=FLOAT},
-            notes =  #{notes,jdbcType=VARCHAR}
-        where   road_id = #{roadId,jdbcType=BIGINT} 
-    </update>
+
+    <!--    <sql id="Base_Column_List">-->
+<!--        road_id,road_name,pit_amount,-->
+<!--        healthy_exp,notes-->
+<!--    </sql>-->
+
+<!--    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">-->
+<!--        select-->
+<!--        <include refid="Base_Column_List" />-->
+<!--        from t_road-->
+<!--        where  road_id = #{roadId,jdbcType=BIGINT} -->
+<!--    </select>-->
+
+<!--    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">-->
+<!--        delete from t_road-->
+<!--        where  road_id = #{roadId,jdbcType=BIGINT} -->
+<!--    </delete>-->
+<!--    <insert id="insert" keyColumn="road_id" keyProperty="roadId" parameterType="com.roadsense.pojo.Road" useGeneratedKeys="true">-->
+<!--        insert into t_road-->
+<!--        ( road_id,road_name,pit_amount-->
+<!--        ,healthy_exp,notes)-->
+<!--        values (#{roadId,jdbcType=BIGINT},#{roadName,jdbcType=VARCHAR},#{pitAmount,jdbcType=INTEGER}-->
+<!--        ,#{healthyExp,jdbcType=FLOAT},#{notes,jdbcType=VARCHAR})-->
+<!--    </insert>-->
+
+<!--    <insert id="insertSelective" keyColumn="road_id" keyProperty="roadId" parameterType="com.roadsense.pojo.Road" useGeneratedKeys="true">-->
+<!--        insert into t_road-->
+<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--                <if test="roadId != null">road_id,</if>-->
+<!--                <if test="roadName != null">road_name,</if>-->
+<!--                <if test="pitAmount != null">pit_amount,</if>-->
+<!--                <if test="healthyExp != null">healthy_exp,</if>-->
+<!--                <if test="notes != null">notes,</if>-->
+<!--        </trim>-->
+<!--        <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--                <if test="roadId != null">#{roadId,jdbcType=BIGINT},</if>-->
+<!--                <if test="roadName != null">#{roadName,jdbcType=VARCHAR},</if>-->
+<!--                <if test="pitAmount != null">#{pitAmount,jdbcType=INTEGER},</if>-->
+<!--                <if test="healthyExp != null">#{healthyExp,jdbcType=FLOAT},</if>-->
+<!--                <if test="notes != null">#{notes,jdbcType=VARCHAR},</if>-->
+<!--        </trim>-->
+<!--    </insert>-->
+
+<!--    <update id="updateByPrimaryKeySelective" parameterType="com.roadsense.pojo.Road">-->
+<!--        update t_road-->
+<!--        <set>-->
+<!--                <if test="roadName != null">-->
+<!--                    road_name = #{roadName,jdbcType=VARCHAR},-->
+<!--                </if>-->
+<!--                <if test="pitAmount != null">-->
+<!--                    pit_amount = #{pitAmount,jdbcType=INTEGER},-->
+<!--                </if>-->
+<!--                <if test="healthyExp != null">-->
+<!--                    healthy_exp = #{healthyExp,jdbcType=FLOAT},-->
+<!--                </if>-->
+<!--                <if test="notes != null">-->
+<!--                    notes = #{notes,jdbcType=VARCHAR},-->
+<!--                </if>-->
+<!--        </set>-->
+<!--        where   road_id = #{roadId,jdbcType=BIGINT} -->
+<!--    </update>-->
+
+<!--    <update id="updateByPrimaryKey" parameterType="com.roadsense.pojo.Road">-->
+<!--        update t_road-->
+<!--        set -->
+<!--            road_name =  #{roadName,jdbcType=VARCHAR},-->
+<!--            pit_amount =  #{pitAmount,jdbcType=INTEGER},-->
+<!--            healthy_exp =  #{healthyExp,jdbcType=FLOAT},-->
+<!--            notes =  #{notes,jdbcType=VARCHAR}-->
+<!--        where   road_id = #{roadId,jdbcType=BIGINT} -->
+<!--    </update>-->
+
 </mapper>

@@ -31,4 +31,14 @@ public class PitServiceImpl implements PitService {
         }
         return cnt == pits.size();
     }
+
+    /**
+     * 查询所有
+     * @return
+     */
+    @Override
+    public List<Pit> selectAll() {
+        List<Pit> pits = pitMapper.selectAll();
+        return pits;
+    }
 }

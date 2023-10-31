@@ -1,6 +1,8 @@
 package com.roadsense.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.roadsense.pojo.Feedback;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author c'c'c'c'c'c'x
@@ -8,18 +10,19 @@ import com.roadsense.pojo.Feedback;
 * @createDate 2023-10-19 15:17:15
 * @Entity com.roadsense.pojo.Feedback
 */
-public interface FeedbackMapper {
+@Mapper
+public interface FeedbackMapper extends BaseMapper<Feedback> {
 
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Feedback record);
-
-    int insertSelective(Feedback record);
-
-    Feedback selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Feedback record);
-
-    int updateByPrimaryKey(Feedback record);
+//    int deleteByPrimaryKey(Long id);
+//
+//    int insert(Feedback record);
+//
+//    int insertSelective(Feedback record);
+//
+//    Feedback selectByPrimaryKey(Long id);
+//
+//    int updateByPrimaryKeySelective(Feedback record);
+//
+//    int updateByPrimaryKey(Feedback record);
 
 }

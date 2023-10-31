@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.roadsense.mapper.PitMapper">
 
-    <resultMap id="BaseResultMap" type="com.roadsense.pojo.Pit">
+    <resultMap id="PitResultMap" type="com.roadsense.pojo.Pit">
             <id property="pitId" column="pit_id" jdbcType="BIGINT"/>
             <result property="roadId" column="road_id" jdbcType="BIGINT"/>
             <result property="img" column="img" jdbcType="VARCHAR"/>
@@ -20,6 +20,10 @@
         INSERT INTO t_pitinfo(pit_id,road_id,img,gps,degree,rec_rate,category,data_source,notes)
         VALUES(NULL,#{roadId},#{img},#{gps},#{degree},#{recRate},#{category},#{dataSource},#{notes})
     </insert>
+
+    <select id="selectAll" resultMap="PitResultMap">
+        select * from t_pitinfo
+    </select>
 
     <!--    <sql id="Base_Column_List">-->
 <!--        pit_id,road_id,img,-->

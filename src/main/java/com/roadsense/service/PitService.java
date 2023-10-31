@@ -14,4 +14,6 @@ public interface PitService {
     @Transactional
     public boolean inserts(List<Pit> pits);
 
+    public List<Pit> selectAll();
+
 }

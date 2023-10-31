@@ -22,6 +22,7 @@ public class Application extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/roads","/roads/**","/recognizes","/recognizes/**");
+        registry.addInterceptor(loginInterceptor)
+                .addPathPatterns("/roads","/roads/**","/recognizes","/recognizes/**","/pits","/pits/**");
     }
 }

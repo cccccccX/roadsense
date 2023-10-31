@@ -3,6 +3,8 @@ package com.roadsense.mapper;
 import com.roadsense.pojo.Pit;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
 * @author c'c'c'c'c'c'x
 * @description 针对表【t_pit】的数据库操作Mapper
@@ -25,5 +27,7 @@ public interface PitMapper {
 //    int updateByPrimaryKey(Pit record);
 
     public int insert(Pit pit);
+
+    public List<Pit> selectAll();
 
 }

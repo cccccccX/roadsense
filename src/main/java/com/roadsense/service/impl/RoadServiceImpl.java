@@ -17,6 +17,12 @@ public class RoadServiceImpl implements RoadService {
     @Autowired
     private RoadMapper roadMapper;
 
+
+    /**
+     * 根据id删除道路
+     * @param id
+     * @return
+     */
     @Override
     @Transactional
     public boolean deleteById(Long id) {
@@ -24,10 +30,27 @@ public class RoadServiceImpl implements RoadService {
         return i == 1;
     }
 
+    /**
+     * 新增一条道路
+     * @param road
+     * @return
+     */
     @Override
     @Transactional
     public boolean insert(Road road) {
         int row = roadMapper.insert(road);
         return row == 1;
+    }
+
+
+    /**
+     * 根据道路名字得到道路id
+     * @param name
+     * @return
+     */
+    @Override
+    public Road getRoadId(String name) {
+        Road road = roadMapper.selectByRoadName(name);
+        return road;
     }
 }

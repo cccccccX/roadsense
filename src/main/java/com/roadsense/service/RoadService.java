@@ -14,5 +14,5 @@ public interface RoadService {
 
     public boolean insert(Road road);
 
-
+    public Road getRoadId(String name);
 }

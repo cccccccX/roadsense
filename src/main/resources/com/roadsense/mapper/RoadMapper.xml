@@ -14,13 +14,18 @@
 
     <insert id="insert">
         INSERT INTO t_roadinfo
-        VALUES(#{roadName},#{pitAmount},#{healthyExp},#{notes})
+        VALUES(null,#{roadName},#{pitAmount},#{healthyExp},#{notes})
     </insert>
 
     <delete id="deleteById">
         DELETE FROM t_roadinfo
         WHERE road_id = #{roadId}
     </delete>
+
+
+    <select id="selectByRoadName" resultMap="BaseResultMap">
+        select * from t_roadinfo where road_name = #{name}
+    </select>
 
     <!--    <sql id="Base_Column_List">-->
 <!--        road_id,road_name,pit_amount,-->

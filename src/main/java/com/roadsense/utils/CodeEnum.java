@@ -14,12 +14,12 @@ public enum CodeEnum {
      * 不同公司有不同状态码约定
      */
     SUCCESS(200,"success"),
-
     FAILED(201,null),
     USERNAME_ERROR(501,"usernameError"),
     PASSWORD_ERROR(503,"passwordError"),
     NOTLOGIN(504,"notLogin"),
-    USERNAME_USED(505,"userNameUsed");
+    USERNAME_USED(505,"userNameUsed"),
+    NOROAD(600,"没有这条道路哦~请重试");
 
 
 

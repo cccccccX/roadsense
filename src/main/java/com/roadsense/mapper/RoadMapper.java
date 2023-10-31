@@ -29,4 +29,6 @@ public interface RoadMapper {
 
     public int insert(Road road);
 
+    public Road selectByRoadName(String name);
+
 }

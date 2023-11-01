@@ -16,4 +16,9 @@ public interface PitService {
 
     public List<Pit> selectAll();
 
+    public List<Pit> select(Pit pit);
+
+    @Transactional
+    public boolean deleteById(Long id);
+
 }

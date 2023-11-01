@@ -1,5 +1,6 @@
 package com.roadsense.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.roadsense.mapper.PitMapper;
 import com.roadsense.pojo.Pit;
 import com.roadsense.service.PitService;
@@ -38,7 +39,39 @@ public class PitServiceImpl implements PitService {
      */
     @Override
     public List<Pit> selectAll() {
-        List<Pit> pits = pitMapper.selectAll();
+        List<Pit> pits = pitMapper.selectList(null);
         return pits;
+    }
+
+
+    /**
+     * 按条件筛选、按关键词搜索。
+     * @param pit
+     * @return
+     */
+    @Override
+    public List<Pit> select(Pit pit) {
+        LambdaQueryWrapper<Pit> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(pit.getRoadId() != null,Pit::getRoadId,pit.getRoadId());
+        lqw.eq(pit.getDegree() != null,Pit::getDegree,pit.getDegree());
+        lqw.like(pit.getDataSource() != null,Pit::getDataSource,pit.getDataSource());
+        lqw.like(pit.getCategory() != null,Pit::getCategory,pit.getCategory());
+        lqw.like(pit.getNotes() != null,Pit::getNotes,pit.getNotes());
+        lqw.eq(pit.getPitId() != null,Pit::getPitId,pit.getPitId());
+
+        List<Pit> pits = pitMapper.selectList(lqw);
+
+        return pits;
+    }
+
+    /**
+     * 根据id删除
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean deleteById(Long id) {
+        int row = pitMapper.deleteById(id);
+        return row == 1;
     }
 }

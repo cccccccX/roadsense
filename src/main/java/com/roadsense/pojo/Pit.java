@@ -1,5 +1,8 @@
 package com.roadsense.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,8 +12,10 @@ import java.io.Serializable;
  * @TableName t_pit
  */
 //@Data
+@TableName("t_pitinfo")
 @Data
 public class Pit {
+    @TableId
     private Long pitId;
 
     private Long roadId;
@@ -29,5 +34,7 @@ public class Pit {
 
     private String notes;
 
+    @TableLogic(value = "0",delval = "1")
+    private Integer deleted;
 
 }

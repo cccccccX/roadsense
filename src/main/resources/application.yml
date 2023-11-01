@@ -18,4 +18,8 @@ spring:
     username: root
     password: root
 #mybatis.configuration.map-underscore-to-camel-case=true
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 

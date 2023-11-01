@@ -1,5 +1,6 @@
 package com.roadsense.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.roadsense.pojo.Pit;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,7 +13,7 @@ import java.util.List;
 * @Entity com.roadsense.pojo.Pit
 */
 @Mapper
-public interface PitMapper {
+public interface PitMapper extends BaseMapper<Pit> {
 
 //    int deleteByPrimaryKey(Long id);
 //
@@ -28,6 +29,6 @@ public interface PitMapper {
 
     public int insert(Pit pit);
 
-    public List<Pit> selectAll();
+//    public List<Pit> selectAll();
 
 }

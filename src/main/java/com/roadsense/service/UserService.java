@@ -1,7 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.pojo.User;
-import com.roadsense.utils.Result;
+import com.roadsense.common.result.Result;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

@@ -3,7 +3,9 @@ package com.roadsense.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.roadsense.pojo.Pit;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -28,6 +30,16 @@ public interface PitMapper extends BaseMapper<Pit> {
 //    int updateByPrimaryKey(Pit record);
 
     public int insert(Pit pit);
+
+    /**
+     * 根据道路id和时间统计坑洼数量
+     * SELECT COUNT(pit_id) FROM t_pitinfo WHERE road_id = 3 AND TIME >= "2023-12-01 00:00:00" AND TIME <= "2023-12-31 23:59:59"
+     * @param roadId
+     * @param begin
+     * @param end
+     * @return
+     */
+    Integer countByRoadIdAndTime(@Param("id") Long roadId, @Param("beginTime") LocalDateTime begin, @Param("endTime") LocalDateTime end);
 
 //    public List<Pit> selectAll();
 

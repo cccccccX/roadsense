@@ -1,6 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.pojo.Road;
+import com.roadsense.vo.RoadPitCountVO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -15,4 +16,10 @@ public interface RoadService {
     public boolean insert(Road road);
 
     public Road getRoadId(String name);
+
+    /**
+     * 各街道坑洼数量统计
+     * @return
+     */
+    RoadPitCountVO pitCount();
 }

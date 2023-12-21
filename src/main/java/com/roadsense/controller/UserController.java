@@ -2,8 +2,8 @@ package com.roadsense.controller;
 
 import com.roadsense.pojo.User;
 import com.roadsense.service.UserService;
-import com.roadsense.utils.Result;
-import com.roadsense.utils.CodeEnum;
+import com.roadsense.common.result.Result;
+import com.roadsense.common.result.CodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

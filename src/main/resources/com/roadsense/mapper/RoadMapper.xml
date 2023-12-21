@@ -27,6 +27,10 @@
         select * from t_roadinfo where road_name = #{name}
     </select>
 
+    <select id="random" resultMap="BaseResultMap">
+        select * from t_roadinfo order by rand() limit #{cnt}
+    </select>
+
     <!--    <sql id="Base_Column_List">-->
 <!--        road_id,road_name,pit_amount,-->
 <!--        healthy_exp,notes-->

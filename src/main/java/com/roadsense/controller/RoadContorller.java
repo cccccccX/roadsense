@@ -1,10 +1,13 @@
 package com.roadsense.controller;
 
-import com.roadsense.mapper.RoadMapper;
 import com.roadsense.pojo.Road;
 import com.roadsense.service.RoadService;
-import com.roadsense.utils.CodeEnum;
-import com.roadsense.utils.Result;
+import com.roadsense.common.result.CodeEnum;
+import com.roadsense.common.result.Result;
+import com.roadsense.vo.RoadPitCountVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
  * created  2023/10/31 10:25
  */
 @RestController
-@RequestMapping("/roads")
+@RequestMapping("/road")
+@Api(tags = "道路相关接口")
+@Slf4j
 public class RoadContorller {
     @Autowired
     private RoadService roadService;
@@ -36,6 +41,18 @@ public class RoadContorller {
             return new Result(CodeEnum.FAILED.getCode(), null,"查询失败~请重试道路名");
         }
         return new Result(CodeEnum.SUCCESS.getCode(), road,CodeEnum.SUCCESS.getMessage());
+    }
+
+    /**
+     * 街道坑洼数量统计
+     * @return
+     */
+    @GetMapping("/pitCount")
+    @ApiOperation("街道坑洼数量统计")
+    public Result pitCount(){
+        log.info("街道坑洼数量统计...");
+        RoadPitCountVO roadPitCountVO = roadService.pitCount();
+        return new Result(CodeEnum.SUCCESS.getCode(), roadPitCountVO, CodeEnum.SUCCESS.getMessage());
     }
 
 }

@@ -4,6 +4,8 @@ import com.roadsense.pojo.Road;
 import com.roadsense.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
 * @author c'c'c'c'c'c'x
 * @description 针对表【t_road】的数据库操作Mapper
@@ -31,4 +33,5 @@ public interface RoadMapper {
 
     public Road selectByRoadName(String name);
 
+    List<Road> random(int cnt);
 }

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 //import lombok.Data;
 
 /**
@@ -36,5 +37,7 @@ public class Pit {
 
     @TableLogic(value = "0",delval = "1")
     private Integer deleted;
+
+    private LocalDateTime time;
 
 }

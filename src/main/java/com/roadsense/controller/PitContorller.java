@@ -1,12 +1,9 @@
 package com.roadsense.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.roadsense.pojo.Pit;
 import com.roadsense.service.PitService;
-import com.roadsense.utils.CodeEnum;
-import com.roadsense.utils.Result;
-import com.sun.org.apache.bcel.internal.classfile.Code;
-import org.apache.ibatis.annotations.Delete;
+import com.roadsense.common.result.CodeEnum;
+import com.roadsense.common.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

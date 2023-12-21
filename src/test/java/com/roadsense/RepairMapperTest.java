@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 
-@SpringBootTest
+//@SpringBootTest
 public class RepairMapperTest {
 
     @Autowired

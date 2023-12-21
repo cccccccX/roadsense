@@ -12,7 +12,7 @@ import java.util.List;
  * author  Edith
  * created  2023/11/1 17:38
  */
-@SpringBootTest
+//@SpringBootTest
 public class PitTest {
     @Autowired
     private PitService pitService;

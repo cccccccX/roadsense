@@ -3,8 +3,8 @@ package com.roadsense.service.impl;
 import com.roadsense.mapper.UserMapper;
 import com.roadsense.pojo.User;
 import com.roadsense.service.UserService;
-import com.roadsense.utils.Result;
-import com.roadsense.utils.CodeEnum;
+import com.roadsense.common.result.Result;
+import com.roadsense.common.result.CodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

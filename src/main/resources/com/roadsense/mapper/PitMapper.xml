@@ -21,7 +21,14 @@
         VALUES(NULL,#{roadId},#{img},#{gps},#{degree},#{recRate},#{category},#{dataSource},#{notes})
     </insert>
 
-<!--    <select id="selectAll" resultMap="PitResultMap">-->
+    <select id="countByRoadIdAndTime" resultType="java.lang.Integer">
+        SELECT COUNT(pit_id)
+        FROM t_pitinfo
+        WHERE road_id = #{id}
+          AND TIME &gt;= #{beginTime} AND TIME &lt;= #{endTime}
+    </select>
+
+    <!--    <select id="selectAll" resultMap="PitResultMap">-->
 <!--        select * from t_pitinfo-->
 <!--    </select>-->
 

@@ -1,4 +1,4 @@
-package com.roadsense.utils;
+package com.roadsense.common.result;
 
 /**
  * @author chaochao Xv

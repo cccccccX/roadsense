@@ -50,6 +50,13 @@ public interface PitMapper extends BaseMapper<Pit> {
      */
     BigDecimal calcHealthyByMonthAndTime(@Param("id") Long roadId, @Param("beginTime") LocalDateTime beginTime, @Param("endTime") LocalDateTime endTime);
 
+    /**
+     * 根据道路id和始末时间得到坑洼id
+     * @param roadId
+     * @return
+     */
+    List<Integer> getPitsByRoadId(@Param("id") Long roadId);
+
 //    public List<Pit> selectAll();
 
 }

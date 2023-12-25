@@ -36,6 +36,13 @@
           AND TIME &gt;= #{beginTime} AND TIME &lt;= #{endTime}
     </select>
 
+
+    <select id="getPitsByRoadId" resultType="java.lang.Integer">
+        select pit_id
+        from t_pitinfo
+        where road_id = #{id}
+    </select>
+
     <!--    <select id="selectAll" resultMap="PitResultMap">-->
 <!--        select * from t_pitinfo-->
 <!--    </select>-->

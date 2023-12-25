@@ -6,6 +6,7 @@ import com.roadsense.common.result.CodeEnum;
 import com.roadsense.common.result.Result;
 import com.roadsense.vo.RoadHealthyVO;
 import com.roadsense.vo.RoadPitCountVO;
+import com.roadsense.vo.RoadRepairedVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -56,12 +57,23 @@ public class RoadContorller {
         return new Result(CodeEnum.SUCCESS.getCode(), roadPitCountVO, CodeEnum.SUCCESS.getMessage());
     }
 
+
+
     @GetMapping("/healthy")
     @ApiOperation("各街道健康指数统计")
     public Result healthy(){
-        log.info("各街道健康指数统计..");
+        log.info("各街道健康指数统计...");
         RoadHealthyVO roadHealthyVO =  roadService.healthy();
         return new Result(CodeEnum.SUCCESS.getCode(), roadHealthyVO, CodeEnum.SUCCESS.getMessage());
+    }
+
+
+    @GetMapping("/repairedPits")
+    @ApiOperation("各街道维护坑洼数量统计")
+    public Result repairedPits() {
+        log.info("各街道维护坑洼数量统计...");
+        RoadRepairedVO roadRepairedVO =  roadService.repairedPits();
+        return new Result(CodeEnum.SUCCESS.getCode(), roadRepairedVO, CodeEnum.SUCCESS.getMessage());
     }
 
 

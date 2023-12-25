@@ -3,6 +3,10 @@ package com.roadsense.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.roadsense.pojo.Repair;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
 * @author c'c'c'c'c'c'x
@@ -12,6 +16,13 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface RepairMapper extends BaseMapper<Repair> {
+
+    /**
+     * 根据坑洼id统计修复完成的坑洼
+     * @param pitIds
+     * @return
+     */
+    Integer countByPitsAndTime(List<Integer> pitIds, @Param("status") Integer status, @Param("beginTime") LocalDateTime begin, @Param("endTime") LocalDateTime end);
 
 //    int deleteByPrimaryKey(Long id);
 //

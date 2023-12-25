@@ -1,19 +1,20 @@
 package com.roadsense.service.impl;
 
-import com.alibaba.druid.support.ibatis.SpringIbatisBeanNameAutoProxyCreator;
+import com.roadsense.constant.RepairedConstant;
 import com.roadsense.constant.RoadConstant;
 import com.roadsense.dto.RoadHealthyDTO;
 import com.roadsense.dto.RoadPitCountDTO;
+import com.roadsense.dto.RoadRepairedDTO;
 import com.roadsense.mapper.PitMapper;
+import com.roadsense.mapper.RepairMapper;
 import com.roadsense.mapper.RoadMapper;
 import com.roadsense.pojo.Road;
 import com.roadsense.service.RoadService;
 import com.roadsense.vo.RoadHealthyVO;
 import com.roadsense.vo.RoadPitCountVO;
+import com.roadsense.vo.RoadRepairedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Lookup;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +40,8 @@ public class RoadServiceImpl implements RoadService {
     @Autowired
     private PitMapper pitMapper;
 
+    @Autowired
+    private RepairMapper repairMapper;
 
     /**
      * 根据id删除道路
@@ -181,5 +184,68 @@ public class RoadServiceImpl implements RoadService {
 
         return roadHealthyVO;
 
+    }
+
+    /**
+     * 各街道维护坑洼数量统计
+     * @return RoadRepairedVO
+     */
+    @Override
+    public RoadRepairedVO repairedPits() {
+        //首先挑选三条街道
+        List<Road> roads = roadMapper.random(3);
+
+        //获取最近六个月
+        LocalDate now = LocalDate.now();
+        List<LocalDate> localDates = new ArrayList<>();
+        localDates.add(now);
+        List<String> date = new ArrayList<>();
+
+        for (int i = 1; i < 6; i++){
+            now = now.minusMonths(1);
+            localDates.add(now);
+        }
+        for (int i = 5; i >= 0; i--){
+            date.add(localDates.get(i).getMonthValue() + "月");
+        }
+
+
+        List<RoadRepairedDTO> list = new ArrayList<>();
+
+        for (Road road : roads){
+            RoadRepairedDTO roadRepairedDTO = new RoadRepairedDTO();
+
+            roadRepairedDTO.setRoadName(road.getRoadName());
+            List<Integer> repairedPits = new ArrayList<>();
+            for (int i = 5; i >= 0; i--){
+                now = localDates.get(i);
+
+                //获取这个月的第一天
+                LocalDateTime begin = LocalDateTime.of(LocalDate.of(now.getYear(), now.getMonthValue(), 1), LocalTime.MIN);
+                //获取这个月的最后一天
+                LocalDateTime end = LocalDateTime.of(now.with(TemporalAdjusters.lastDayOfMonth()), LocalTime.MAX);
+
+                List<Integer> pits = pitMapper.getPitsByRoadId(road.getRoadId());
+
+                if (pits == null || pits.size() == 0){
+                    repairedPits.add(0);
+                    continue;
+                }
+
+                Integer cnt = repairMapper.countByPitsAndTime(pits, RepairedConstant.REPAIR_COMPLET, begin, end);
+
+                if (cnt == null) cnt = 0;
+
+                repairedPits.add(cnt);
+            }
+            roadRepairedDTO.setRepairCount(repairedPits);
+            list.add(roadRepairedDTO);
+        }
+
+        RoadRepairedVO roadRepairedVO = RoadRepairedVO.builder()
+                .date(date)
+                .list(list)
+                .build();
+        return roadRepairedVO;
     }
 }

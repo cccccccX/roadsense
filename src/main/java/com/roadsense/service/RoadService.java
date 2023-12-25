@@ -3,6 +3,7 @@ package com.roadsense.service;
 import com.roadsense.pojo.Road;
 import com.roadsense.vo.RoadHealthyVO;
 import com.roadsense.vo.RoadPitCountVO;
+import com.roadsense.vo.RoadRepairedVO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -30,4 +31,10 @@ public interface RoadService {
      * @return
      */
     RoadHealthyVO healthy();
+
+    /**
+     * 各街道维护坑洼数量统计
+     * @return
+     */
+    RoadRepairedVO repairedPits();
 }

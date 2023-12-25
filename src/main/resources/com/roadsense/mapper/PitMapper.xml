@@ -28,6 +28,14 @@
           AND TIME &gt;= #{beginTime} AND TIME &lt;= #{endTime}
     </select>
 
+
+    <select id="calcHealthyByMonthAndTime" resultType="java.math.BigDecimal">
+        SELECT LOG(AVG(degree)) * COUNT(pit_id) AS healthy
+        FROM t_pitinfo
+        WHERE road_id = #{id}
+          AND TIME &gt;= #{beginTime} AND TIME &lt;= #{endTime}
+    </select>
+
     <!--    <select id="selectAll" resultMap="PitResultMap">-->
 <!--        select * from t_pitinfo-->
 <!--    </select>-->

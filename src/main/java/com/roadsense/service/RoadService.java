@@ -1,6 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.pojo.Road;
+import com.roadsense.vo.RoadHealthyVO;
 import com.roadsense.vo.RoadPitCountVO;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 public interface RoadService {
+
 
     public boolean deleteById(Long id);
 
@@ -22,4 +24,10 @@ public interface RoadService {
      * @return
      */
     RoadPitCountVO pitCount();
+
+    /**
+     * 各街道健康指数统计
+     * @return
+     */
+    RoadHealthyVO healthy();
 }

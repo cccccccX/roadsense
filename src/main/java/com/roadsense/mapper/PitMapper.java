@@ -5,6 +5,7 @@ import com.roadsense.pojo.Pit;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,6 +41,14 @@ public interface PitMapper extends BaseMapper<Pit> {
      * @return
      */
     Integer countByRoadIdAndTime(@Param("id") Long roadId, @Param("beginTime") LocalDateTime begin, @Param("endTime") LocalDateTime end);
+
+
+
+    /**
+     * 根据始末时间和月份求健康指数
+     * @return
+     */
+    BigDecimal calcHealthyByMonthAndTime(@Param("id") Long roadId, @Param("beginTime") LocalDateTime beginTime, @Param("endTime") LocalDateTime endTime);
 
 //    public List<Pit> selectAll();
 

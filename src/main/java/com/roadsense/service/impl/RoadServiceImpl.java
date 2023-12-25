@@ -2,18 +2,22 @@ package com.roadsense.service.impl;
 
 import com.alibaba.druid.support.ibatis.SpringIbatisBeanNameAutoProxyCreator;
 import com.roadsense.constant.RoadConstant;
+import com.roadsense.dto.RoadHealthyDTO;
 import com.roadsense.dto.RoadPitCountDTO;
 import com.roadsense.mapper.PitMapper;
 import com.roadsense.mapper.RoadMapper;
 import com.roadsense.pojo.Road;
 import com.roadsense.service.RoadService;
+import com.roadsense.vo.RoadHealthyVO;
 import com.roadsense.vo.RoadPitCountVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Lookup;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -122,7 +126,60 @@ public class RoadServiceImpl implements RoadService {
                 .build();
 
         return roadPitCountVO;
+    }
 
+
+    @Override
+    public RoadHealthyVO healthy() {
+        //首先挑选三条街道
+        List<Road> roads = roadMapper.random(3);
+
+        //获取最近六个月
+        LocalDate now = LocalDate.now();
+        List<LocalDate> localDates = new ArrayList<>();
+        localDates.add(now);
+        List<String> date = new ArrayList<>();
+
+        for (int i = 1; i < 6; i++){
+            now = now.minusMonths(1);
+            localDates.add(now);
+        }
+        for (int i = 5; i >= 0; i--){
+            date.add(localDates.get(i).getMonthValue() + "月");
+        }
+
+        List<RoadHealthyDTO> list = new ArrayList<>();
+
+        //查询
+        for (Road road : roads){
+            RoadHealthyDTO roadHealthyDTO = new RoadHealthyDTO();
+
+            roadHealthyDTO.setRoadName(road.getRoadName());
+            List<BigDecimal> healthy = new ArrayList<>();
+            for (int i = 5; i >= 0; i--){
+                now = localDates.get(i);
+
+                //获取这个月的第一天
+                LocalDateTime begin = LocalDateTime.of(LocalDate.of(now.getYear(), now.getMonthValue(), 1), LocalTime.MIN);
+                //获取这个月的最后一天
+                LocalDateTime end = LocalDateTime.of(now.with(TemporalAdjusters.lastDayOfMonth()), LocalTime.MAX);
+
+                BigDecimal h = pitMapper.calcHealthyByMonthAndTime(road.getRoadId(), begin, end);
+                if (h == null) h = BigDecimal.valueOf(0);
+                healthy.add(h);
+            }
+
+            roadHealthyDTO.setHealthyExp(healthy);
+            list.add(roadHealthyDTO);
+        }
+
+
+        RoadHealthyVO roadHealthyVO = RoadHealthyVO.builder()
+                .list(list)
+                .date(date)
+                .build();
+
+        return roadHealthyVO;
 
     }
 }

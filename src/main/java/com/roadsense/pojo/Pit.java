@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 //import lombok.Data;
 
@@ -25,7 +26,7 @@ public class Pit {
 
     private String gps;
 
-    private String degree;
+    private BigDecimal degree;
 
     private String recRate;
 

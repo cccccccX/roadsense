@@ -14,5 +14,9 @@
             <result property="desInfo" column="des_info" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <select id="countByStatus" resultType="java.lang.Integer">
+        select count(fback_id) from t_feedback where verify_state = #{status}
+    </select>
+
 
 </mapper>

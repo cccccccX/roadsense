@@ -28,6 +28,8 @@ public class Result {
         this.data = data;
     }
 
+
+
     // 返回数据
     protected static Result build(Object data) {
         Result result = new Result();

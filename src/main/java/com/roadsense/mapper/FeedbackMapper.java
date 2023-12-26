@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface FeedbackMapper extends BaseMapper<Feedback> {
+    Integer countByStatus(Integer status);
 
 //    int deleteByPrimaryKey(Long id);
 //

@@ -3,6 +3,7 @@ package com.roadsense.controller;
 import com.roadsense.common.result.Result;
 import com.roadsense.service.FeedBackService;
 import com.roadsense.vo.FeedBackSuccessCountVO;
+import com.roadsense.vo.FeedBackUnProcessedVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,15 @@ public class FeedBackController {
         log.info("用户有效反馈数...");
         FeedBackSuccessCountVO feedBackSuccessCountVO = feedBackService.successCount();
         return Result.ok(feedBackSuccessCountVO);
+    }
+
+
+    @GetMapping("/unprocessedCount")
+    @ApiOperation("当前待审核")
+    public Result unprocessedCount(){
+        log.info("当前待审核...");
+        FeedBackUnProcessedVO feedBackUnProcessedVO = feedBackService.unprocessedCount();
+        return Result.ok(feedBackUnProcessedVO);
     }
 
 

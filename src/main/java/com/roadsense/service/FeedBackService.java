@@ -1,6 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.vo.FeedBackSuccessCountVO;
+import com.roadsense.vo.FeedBackUnProcessedVO;
 
 /**
  * author  Edith
@@ -13,4 +14,10 @@ public interface FeedBackService {
      * @return
      */
     FeedBackSuccessCountVO successCount();
+
+    /**
+     * 当前待审核的数量
+     * @return
+     */
+    FeedBackUnProcessedVO unprocessedCount();
 }

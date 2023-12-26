@@ -14,6 +14,7 @@
             <result property="category" column="category" jdbcType="VARCHAR"/>
             <result property="dataSource" column="data_source" jdbcType="VARCHAR"/>
             <result property="notes" column="notes" jdbcType="VARCHAR"/>
+            <result property="repairStatus" column="repair_status"></result>
     </resultMap>
 
     <insert id="insert">
@@ -59,6 +60,19 @@
         <foreach collection="ids" separator="," open="(" close=")" item="id">
             #{id}
         </foreach>
+    </select>
+
+    <select id="pageQuery" resultMap="PitResultMap">
+        SELECT pit.* FROM t_pitinfo AS pit, t_roadinfo AS road
+        <where>
+            pit.road_id = road.road_id
+            <if test="repairStatus != null">and repair_status = #{repairStatus}</if>
+            <if test="pitId != null">and pit_id = #{pitId}</if>
+            <if test="roadName != null and roadName != ''">and road_name like concat('%',#{roadName},'%') </if>
+            <if test="degree != null">and degree = #{degree}</if>
+            <if test="category != null and category != ''">and category like concat('%', #{category}, '%')</if>
+            <if test="dataSource != null and dataSource != ''">and data_source like concat('%', #{dataSource}, '%')</if>
+        </where>
     </select>
 
     <!--    <select id="selectAll" resultMap="PitResultMap">-->

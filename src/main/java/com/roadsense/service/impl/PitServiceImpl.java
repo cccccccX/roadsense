@@ -1,7 +1,11 @@
 package com.roadsense.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.roadsense.common.result.PageResult;
 import com.roadsense.constant.RepairedConstant;
+import com.roadsense.dto.PitPageQueryDTO;
 import com.roadsense.mapper.PitMapper;
 import com.roadsense.mapper.RepairMapper;
 import com.roadsense.pojo.Pit;
@@ -134,5 +138,24 @@ public class PitServiceImpl implements PitService {
         PitUnRepairedVO pitUnRepairedVO = new PitUnRepairedVO();
         pitUnRepairedVO.setUnrepaired(cnt);
         return pitUnRepairedVO;
+    }
+
+
+    /**
+     * 坑洼分页查询
+     * @param pitPageQueryDTO
+     * @return
+     */
+    @Override
+    public PageResult pageQuery(PitPageQueryDTO pitPageQueryDTO) {
+        PageHelper.startPage(pitPageQueryDTO.getPageNum(), pitPageQueryDTO.getPageSize());
+
+        Page<Pit> page = pitMapper.pageQuery(pitPageQueryDTO);
+
+        PageResult pageResult = new PageResult();
+        pageResult.setTotal(page.getTotal());
+        pageResult.setData(page.getResult());
+
+        return pageResult;
     }
 }

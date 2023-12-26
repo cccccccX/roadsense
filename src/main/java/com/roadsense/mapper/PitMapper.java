@@ -1,6 +1,8 @@
 package com.roadsense.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.pagehelper.Page;
+import com.roadsense.dto.PitPageQueryDTO;
 import com.roadsense.pojo.Pit;
 import com.roadsense.vo.PitTypeCountVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -76,6 +78,13 @@ public interface PitMapper extends BaseMapper<Pit> {
      * @return
      */
     Integer countByNotPitId(List<Integer> ids);
+
+    /**
+     * 坑洼分页查询
+     * @param pitPageQueryDTO
+     * @return
+     */
+    Page<Pit> pageQuery(PitPageQueryDTO pitPageQueryDTO);
 
 //    public List<Pit> selectAll();
 

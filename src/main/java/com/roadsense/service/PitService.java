@@ -1,5 +1,7 @@
 package com.roadsense.service;
 
+import com.roadsense.common.result.PageResult;
+import com.roadsense.dto.PitPageQueryDTO;
 import com.roadsense.pojo.Pit;
 import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitRepairedVO;
@@ -48,4 +50,11 @@ public interface PitService {
      * @return
      */
     PitUnRepairedVO unRepairedCount();
+
+    /**
+     * 坑洼分页查询
+     * @param pitPageQueryDTO
+     * @return
+     */
+    PageResult pageQuery(PitPageQueryDTO pitPageQueryDTO);
 }

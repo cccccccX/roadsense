@@ -1,6 +1,7 @@
 package com.roadsense.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
+import com.roadsense.common.result.PageResult;
+import com.roadsense.dto.PitPageQueryDTO;
 import com.roadsense.pojo.Pit;
 import com.roadsense.service.PitService;
 import com.roadsense.common.result.CodeEnum;
@@ -12,7 +13,6 @@ import com.roadsense.vo.PitUnRepairedVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -99,5 +99,13 @@ public class PitContorller {
         return Result.ok(pitUnRepairedVO);
     }
 
+
+    @GetMapping("/page")
+    @ApiOperation("坑洼分页查询")
+    public Result page( PitPageQueryDTO pitPageQueryDTO){
+        log.info("坑洼分页查询, {}", pitPageQueryDTO);
+        PageResult pageResult = pitService.pageQuery(pitPageQueryDTO);
+        return Result.ok(pageResult);
+    }
 
 }

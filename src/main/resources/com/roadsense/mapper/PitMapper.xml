@@ -47,6 +47,11 @@
         SELECT  category, COUNT(category) AS COUNT FROM t_pitinfo GROUP BY category
     </select>
 
+
+    <select id="countAll" resultType="java.lang.Integer">
+        select count(pit_id) from t_pitinfo
+    </select>
+
     <!--    <select id="selectAll" resultMap="PitResultMap">-->
 <!--        select * from t_pitinfo-->
 <!--    </select>-->

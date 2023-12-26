@@ -1,6 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.pojo.Pit;
+import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitTypeCountVO;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,4 +28,10 @@ public interface PitService {
      * @return
      */
     List<PitTypeCountVO> typeCount();
+
+    /**
+     * 获取坑洼总数
+     * @return
+     */
+    PitAmountVO countAll();
 }

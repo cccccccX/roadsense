@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.roadsense.mapper.PitMapper;
 import com.roadsense.pojo.Pit;
 import com.roadsense.service.PitService;
+import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitTypeCountVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,5 +86,18 @@ public class PitServiceImpl implements PitService {
     public List<PitTypeCountVO> typeCount() {
         List<PitTypeCountVO> pitTypeCountVOS = pitMapper.countCategory();
         return pitTypeCountVOS;
+    }
+
+
+    /**
+     * 获取坑洼总数
+     * @return
+     */
+    @Override
+    public PitAmountVO countAll() {
+        Integer cnt = pitMapper.countAll();
+        PitAmountVO pitAmountVO = new PitAmountVO();
+        pitAmountVO.setPitCount(cnt);
+        return pitAmountVO;
     }
 }

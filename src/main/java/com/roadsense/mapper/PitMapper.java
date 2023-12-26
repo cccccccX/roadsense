@@ -64,6 +64,12 @@ public interface PitMapper extends BaseMapper<Pit> {
      */
     List<PitTypeCountVO> countCategory();
 
+    /**
+     * 统计所有坑洼数
+     * @return
+     */
+    Integer countAll();
+
 //    public List<Pit> selectAll();
 
 }

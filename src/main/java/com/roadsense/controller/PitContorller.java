@@ -5,6 +5,7 @@ import com.roadsense.pojo.Pit;
 import com.roadsense.service.PitService;
 import com.roadsense.common.result.CodeEnum;
 import com.roadsense.common.result.Result;
+import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitTypeCountVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -68,6 +69,15 @@ public class PitContorller {
         log.info("坑洼类别统计...");
         List<PitTypeCountVO> list = pitService.typeCount();
         return new Result(CodeEnum.SUCCESS.getCode(), list, CodeEnum.SUCCESS.getMessage());
+    }
+
+
+    @GetMapping("/amount")
+    @ApiOperation("坑洼总数")
+    public Result amount(){
+        log.info("坑洼总数...");
+        PitAmountVO pitAmountVO = pitService.countAll();
+        return new Result(CodeEnum.SUCCESS.getCode(), pitAmountVO, CodeEnum.SUCCESS.getMessage());
     }
 
 

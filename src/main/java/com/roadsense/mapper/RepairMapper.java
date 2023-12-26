@@ -31,6 +31,12 @@ public interface RepairMapper extends BaseMapper<Repair> {
      */
     Integer countByStatus(Integer status);
 
+    /**
+     * 得到不重复的pit_id
+     * @return
+     */
+    List<Integer> getDistinctPitIds();
+
 //    int deleteByPrimaryKey(Long id);
 //
 //    int insert(Repair record);

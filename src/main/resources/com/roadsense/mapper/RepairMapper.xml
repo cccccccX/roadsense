@@ -28,4 +28,9 @@
     </select>
 
 
+    <select id="getDistinctPitIds" resultType="java.lang.Integer">
+        select distinct(pit_id) from t_repair
+    </select>
+
+
 </mapper>

@@ -70,6 +70,13 @@ public interface PitMapper extends BaseMapper<Pit> {
      */
     Integer countAll();
 
+    /**
+     * 统计不在pit_id里的数量
+     * @param ids
+     * @return
+     */
+    Integer countByNotPitId(List<Integer> ids);
+
 //    public List<Pit> selectAll();
 
 }

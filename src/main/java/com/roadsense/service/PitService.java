@@ -4,6 +4,7 @@ import com.roadsense.pojo.Pit;
 import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitRepairedVO;
 import com.roadsense.vo.PitTypeCountVO;
+import com.roadsense.vo.PitUnRepairedVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -41,4 +42,10 @@ public interface PitService {
      * @return
      */
     PitRepairedVO repairedPits();
+
+    /**
+     * 当前待处理的坑洼数
+     * @return
+     */
+    PitUnRepairedVO unRepairedCount();
 }

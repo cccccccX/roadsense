@@ -8,6 +8,7 @@ import com.roadsense.common.result.Result;
 import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitRepairedVO;
 import com.roadsense.vo.PitTypeCountVO;
+import com.roadsense.vo.PitUnRepairedVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -87,6 +88,15 @@ public class PitContorller {
         log.info("处理坑洼数...");
         PitRepairedVO pitRepairedVO = pitService.repairedPits();
         return new Result(CodeEnum.SUCCESS.getCode(), pitRepairedVO, CodeEnum.SUCCESS.getMessage());
+    }
+
+
+    @GetMapping("/unrepairedCount")
+    @ApiOperation("当前待处理修复的坑洼数")
+    public Result unrepairedCount(){
+        log.info("当前待处理修复的坑洼数...");
+        PitUnRepairedVO pitUnRepairedVO = pitService.unRepairedCount();
+        return Result.ok(pitUnRepairedVO);
     }
 
 

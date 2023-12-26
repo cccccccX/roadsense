@@ -9,6 +9,7 @@ import com.roadsense.service.PitService;
 import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitRepairedVO;
 import com.roadsense.vo.PitTypeCountVO;
+import com.roadsense.vo.PitUnRepairedVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -117,5 +118,21 @@ public class PitServiceImpl implements PitService {
         PitRepairedVO pitRepairedVO = new PitRepairedVO();
         pitRepairedVO.setRepaired(cnt);
         return pitRepairedVO;
+    }
+
+
+    /**
+     * 当前待处理坑洼数
+     * @return
+     */
+    @Override
+    public PitUnRepairedVO unRepairedCount() {
+        List<Integer> list = repairMapper.getDistinctPitIds();
+
+        Integer cnt = pitMapper.countByNotPitId(list);
+
+        PitUnRepairedVO pitUnRepairedVO = new PitUnRepairedVO();
+        pitUnRepairedVO.setUnrepaired(cnt);
+        return pitUnRepairedVO;
     }
 }

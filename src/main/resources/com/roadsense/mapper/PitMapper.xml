@@ -43,6 +43,10 @@
         where road_id = #{id}
     </select>
 
+    <select id="countCategory" resultType="com.roadsense.vo.PitTypeCountVO">
+        SELECT  category, COUNT(category) AS COUNT FROM t_pitinfo GROUP BY category
+    </select>
+
     <!--    <select id="selectAll" resultMap="PitResultMap">-->
 <!--        select * from t_pitinfo-->
 <!--    </select>-->

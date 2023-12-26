@@ -1,9 +1,15 @@
 package com.roadsense.controller;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.roadsense.pojo.Pit;
 import com.roadsense.service.PitService;
 import com.roadsense.common.result.CodeEnum;
 import com.roadsense.common.result.Result;
+import com.roadsense.vo.PitTypeCountVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +21,9 @@ import java.util.List;
  * created  2023/10/31 11:12
  */
 @RestController
-@RequestMapping("/pits")
+@RequestMapping("/pothole")
+@Api(tags = "坑洼相关接口")
+@Slf4j
 public class PitContorller {
 
     @Autowired
@@ -52,5 +60,16 @@ public class PitContorller {
         }
         return new Result(CodeEnum.SUCCESS.getCode(), null,CodeEnum.SUCCESS.getMessage());
     }
+
+
+    @GetMapping("/typeCount")
+    @ApiOperation("坑洼类别统计")
+    public Result typeCount(){
+        log.info("坑洼类别统计...");
+        List<PitTypeCountVO> list = pitService.typeCount();
+        return new Result(CodeEnum.SUCCESS.getCode(), list, CodeEnum.SUCCESS.getMessage());
+    }
+
+
 
 }

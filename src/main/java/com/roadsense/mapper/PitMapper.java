@@ -2,6 +2,7 @@ package com.roadsense.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.roadsense.pojo.Pit;
+import com.roadsense.vo.PitTypeCountVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -56,6 +57,12 @@ public interface PitMapper extends BaseMapper<Pit> {
      * @return
      */
     List<Integer> getPitsByRoadId(@Param("id") Long roadId);
+
+    /**
+     * 坑洼类别统计
+     * @return
+     */
+    List<PitTypeCountVO> countCategory();
 
 //    public List<Pit> selectAll();
 

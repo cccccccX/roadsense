@@ -1,6 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.pojo.Pit;
+import com.roadsense.vo.PitTypeCountVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -21,4 +22,9 @@ public interface PitService {
     @Transactional
     public boolean deleteById(Long id);
 
+    /**
+     * 坑洼类别统计
+     * @return
+     */
+    List<PitTypeCountVO> typeCount();
 }

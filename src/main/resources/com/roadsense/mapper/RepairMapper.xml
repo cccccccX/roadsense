@@ -23,4 +23,9 @@
     </select>
 
 
+    <select id="countByStatus" resultType="java.lang.Integer">
+        select count(repair_id) from t_repair where repair_state = #{status}
+    </select>
+
+
 </mapper>

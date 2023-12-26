@@ -24,6 +24,13 @@ public interface RepairMapper extends BaseMapper<Repair> {
      */
     Integer countByPitsAndTime(List<Integer> pitIds, @Param("status") Integer status, @Param("beginTime") LocalDateTime begin, @Param("endTime") LocalDateTime end);
 
+    /**
+     * 根据状态计数
+     * @param status
+     * @return
+     */
+    Integer countByStatus(Integer status);
+
 //    int deleteByPrimaryKey(Long id);
 //
 //    int insert(Repair record);

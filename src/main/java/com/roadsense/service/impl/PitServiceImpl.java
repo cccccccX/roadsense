@@ -1,10 +1,13 @@
 package com.roadsense.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.roadsense.constant.RepairedConstant;
 import com.roadsense.mapper.PitMapper;
+import com.roadsense.mapper.RepairMapper;
 import com.roadsense.pojo.Pit;
 import com.roadsense.service.PitService;
 import com.roadsense.vo.PitAmountVO;
+import com.roadsense.vo.PitRepairedVO;
 import com.roadsense.vo.PitTypeCountVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,8 @@ public class PitServiceImpl implements PitService {
 
     @Autowired
     private PitMapper pitMapper;
+    @Autowired
+    private RepairMapper repairMapper;
 
     /**
      * 插入多个坑洼信息
@@ -99,5 +104,18 @@ public class PitServiceImpl implements PitService {
         PitAmountVO pitAmountVO = new PitAmountVO();
         pitAmountVO.setPitCount(cnt);
         return pitAmountVO;
+    }
+
+
+    /**
+     * 处理坑洼数
+     * @return
+     */
+    @Override
+    public PitRepairedVO repairedPits() {
+        Integer cnt = repairMapper.countByStatus(RepairedConstant.REPAIR_COMPLET);
+        PitRepairedVO pitRepairedVO = new PitRepairedVO();
+        pitRepairedVO.setRepaired(cnt);
+        return pitRepairedVO;
     }
 }

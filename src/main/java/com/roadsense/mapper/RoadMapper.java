@@ -1,7 +1,6 @@
 package com.roadsense.mapper;
 
-import com.roadsense.pojo.Road;
-import com.roadsense.pojo.User;
+import com.roadsense.entity.pojo.Road;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

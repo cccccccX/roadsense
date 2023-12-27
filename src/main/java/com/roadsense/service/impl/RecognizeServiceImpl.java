@@ -1,6 +1,6 @@
 package com.roadsense.service.impl;
 
-import com.roadsense.pojo.Pit;
+import com.roadsense.entity.pojo.Pit;
 import com.roadsense.service.RecognizeService;
 import org.springframework.stereotype.Service;
 

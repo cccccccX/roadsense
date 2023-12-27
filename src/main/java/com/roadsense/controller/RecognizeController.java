@@ -1,7 +1,7 @@
 package com.roadsense.controller;
 
-import com.roadsense.pojo.Pit;
-import com.roadsense.pojo.Road;
+import com.roadsense.entity.pojo.Pit;
+import com.roadsense.entity.pojo.Road;
 import com.roadsense.service.PitService;
 import com.roadsense.service.RecognizeService;
 import com.roadsense.service.RoadService;

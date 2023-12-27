@@ -1,7 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.common.result.PageResult;
-import com.roadsense.dto.RepairPageDTO;
+import com.roadsense.entity.dto.RepairPageDTO;
 
 /**
  * author  Edith

@@ -1,15 +1,15 @@
 package com.roadsense.controller;
 
 import com.roadsense.common.result.PageResult;
-import com.roadsense.dto.PitPageQueryDTO;
-import com.roadsense.pojo.Pit;
+import com.roadsense.entity.dto.PitPageQueryDTO;
+import com.roadsense.entity.pojo.Pit;
 import com.roadsense.service.PitService;
 import com.roadsense.common.result.CodeEnum;
 import com.roadsense.common.result.Result;
-import com.roadsense.vo.PitAmountVO;
-import com.roadsense.vo.PitRepairedVO;
-import com.roadsense.vo.PitTypeCountVO;
-import com.roadsense.vo.PitUnRepairedVO;
+import com.roadsense.entity.vo.PitAmountVO;
+import com.roadsense.entity.vo.PitRepairedVO;
+import com.roadsense.entity.vo.PitTypeCountVO;
+import com.roadsense.entity.vo.PitUnRepairedVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

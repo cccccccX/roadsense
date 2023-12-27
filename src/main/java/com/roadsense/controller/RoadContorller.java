@@ -1,12 +1,12 @@
 package com.roadsense.controller;
 
-import com.roadsense.pojo.Road;
+import com.roadsense.entity.pojo.Road;
 import com.roadsense.service.RoadService;
 import com.roadsense.common.result.CodeEnum;
 import com.roadsense.common.result.Result;
-import com.roadsense.vo.RoadHealthyVO;
-import com.roadsense.vo.RoadPitCountVO;
-import com.roadsense.vo.RoadRepairedVO;
+import com.roadsense.entity.vo.RoadHealthyVO;
+import com.roadsense.entity.vo.RoadPitCountVO;
+import com.roadsense.entity.vo.RoadRepairedVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

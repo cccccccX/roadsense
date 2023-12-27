@@ -58,6 +58,14 @@ public class Result {
         Result result = build(data);
         return build(data, CodeEnum.SUCCESS);
     }
+
+    public static Result error(String message) {
+        Result result = new Result();
+        result.setCode(CodeEnum.FAILED.getCode());
+        result.setMessage(message);
+        return result;
+    }
+
     public Result message(String msg){
         this.setMessage(msg);
         return this;

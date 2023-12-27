@@ -1,9 +1,8 @@
 package com.roadsense.controller;
 
-import com.github.pagehelper.Page;
 import com.roadsense.common.result.PageResult;
 import com.roadsense.common.result.Result;
-import com.roadsense.dto.RepairPageDTO;
+import com.roadsense.entity.dto.RepairPageDTO;
 import com.roadsense.service.RepairService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.lang.annotation.Retention;
 
 /**
  * author  Edith

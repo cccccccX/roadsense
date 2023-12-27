@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.roadsense.mapper.FeedbackMapper">
 
-    <resultMap id="BaseResultMap" type="com.roadsense.pojo.Feedback">
+    <resultMap id="BaseResultMap" type="com.roadsense.entity.pojo.Feedback">
             <id property="fbackId" column="fback_id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
             <result property="fbackImg" column="fback_img" jdbcType="VARCHAR"/>

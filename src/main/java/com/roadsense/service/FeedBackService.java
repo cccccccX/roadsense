@@ -1,9 +1,9 @@
 package com.roadsense.service;
 
 import com.roadsense.common.result.PageResult;
-import com.roadsense.dto.FeedBackPageQueryDTO;
-import com.roadsense.vo.FeedBackSuccessCountVO;
-import com.roadsense.vo.FeedBackUnProcessedVO;
+import com.roadsense.entity.dto.FeedBackPageQueryDTO;
+import com.roadsense.entity.vo.FeedBackSuccessCountVO;
+import com.roadsense.entity.vo.FeedBackUnProcessedVO;
 
 /**
  * author  Edith

@@ -3,11 +3,10 @@ package com.roadsense.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.roadsense.common.result.PageResult;
-import com.roadsense.dto.RepairPageDTO;
+import com.roadsense.entity.dto.RepairPageDTO;
 import com.roadsense.mapper.RepairMapper;
-import com.roadsense.service.RecognizeService;
 import com.roadsense.service.RepairService;
-import com.roadsense.vo.RepairPageVO;
+import com.roadsense.entity.vo.RepairPageVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

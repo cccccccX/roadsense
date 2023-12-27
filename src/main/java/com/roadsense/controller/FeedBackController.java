@@ -2,10 +2,10 @@ package com.roadsense.controller;
 
 import com.roadsense.common.result.PageResult;
 import com.roadsense.common.result.Result;
-import com.roadsense.dto.FeedBackPageQueryDTO;
+import com.roadsense.entity.dto.FeedBackPageQueryDTO;
 import com.roadsense.service.FeedBackService;
-import com.roadsense.vo.FeedBackSuccessCountVO;
-import com.roadsense.vo.FeedBackUnProcessedVO;
+import com.roadsense.entity.vo.FeedBackSuccessCountVO;
+import com.roadsense.entity.vo.FeedBackUnProcessedVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

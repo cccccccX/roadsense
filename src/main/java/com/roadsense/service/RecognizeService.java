@@ -1,6 +1,6 @@
 package com.roadsense.service;
 
-import com.roadsense.pojo.Pit;
+import com.roadsense.entity.pojo.Pit;
 
 import java.util.List;
 

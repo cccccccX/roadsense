@@ -1,9 +1,9 @@
 package com.roadsense.service;
 
-import com.roadsense.pojo.Road;
-import com.roadsense.vo.RoadHealthyVO;
-import com.roadsense.vo.RoadPitCountVO;
-import com.roadsense.vo.RoadRepairedVO;
+import com.roadsense.entity.pojo.Road;
+import com.roadsense.entity.vo.RoadHealthyVO;
+import com.roadsense.entity.vo.RoadPitCountVO;
+import com.roadsense.entity.vo.RoadRepairedVO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

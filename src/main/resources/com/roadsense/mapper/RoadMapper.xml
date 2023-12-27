@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.roadsense.mapper.RoadMapper">
 
-    <resultMap id="BaseResultMap" type="com.roadsense.pojo.Road">
+    <resultMap id="BaseResultMap" type="com.roadsense.entity.pojo.Road">
             <id property="roadId" column="road_id" jdbcType="BIGINT"/>
             <result property="roadName" column="road_name" jdbcType="VARCHAR"/>
             <result property="pitAmount" column="pit_amount" jdbcType="INTEGER"/>

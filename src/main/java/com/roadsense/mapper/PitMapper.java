@@ -2,9 +2,9 @@ package com.roadsense.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.pagehelper.Page;
-import com.roadsense.dto.PitPageQueryDTO;
-import com.roadsense.pojo.Pit;
-import com.roadsense.vo.PitTypeCountVO;
+import com.roadsense.entity.dto.PitPageQueryDTO;
+import com.roadsense.entity.pojo.Pit;
+import com.roadsense.entity.vo.PitTypeCountVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

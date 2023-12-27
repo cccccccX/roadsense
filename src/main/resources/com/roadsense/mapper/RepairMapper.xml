@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.roadsense.mapper.RepairMapper">
 
-    <resultMap id="BaseResultMap" type="com.roadsense.pojo.Repair">
+    <resultMap id="BaseResultMap" type="com.roadsense.entity.pojo.Repair">
             <id property="repairId" column="repair_id" jdbcType="BIGINT"/>
             <result property="pitId" column="pit_id" jdbcType="BIGINT"/>
             <result property="repairState" column="repair_state" jdbcType="VARCHAR"/>
@@ -37,7 +37,7 @@
     </select>
     
     
-    <select id="pageQuery" resultType="com.roadsense.vo.RepairPageVO">
+    <select id="pageQuery" resultType="com.roadsense.entity.vo.RepairPageVO">
         SELECT repair.*, pit.img AS image
         FROM
             t_repair AS REPAIR,

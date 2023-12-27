@@ -23,3 +23,12 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
+mikasa:
+  roadsense:
+    jwt:
+      secret-key: roadSense
+      ttl: 7200000
+      token-name: token
+
+
+

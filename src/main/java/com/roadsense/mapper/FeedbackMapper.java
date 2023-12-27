@@ -2,9 +2,7 @@ package com.roadsense.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.pagehelper.Page;
-import com.roadsense.dto.FeedBackPageQueryDTO;
-import com.roadsense.pojo.Feedback;
-import com.roadsense.vo.FeedBackPageVO;
+import com.roadsense.entity.pojo.Feedback;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

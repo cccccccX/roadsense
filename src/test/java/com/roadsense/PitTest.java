@@ -1,6 +1,6 @@
 package com.roadsense;
 
-import com.roadsense.pojo.Pit;
+import com.roadsense.entity.pojo.Pit;
 import com.roadsense.service.PitService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

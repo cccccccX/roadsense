@@ -1,12 +1,12 @@
 package com.roadsense.service;
 
 import com.roadsense.common.result.PageResult;
-import com.roadsense.dto.PitPageQueryDTO;
-import com.roadsense.pojo.Pit;
-import com.roadsense.vo.PitAmountVO;
-import com.roadsense.vo.PitRepairedVO;
-import com.roadsense.vo.PitTypeCountVO;
-import com.roadsense.vo.PitUnRepairedVO;
+import com.roadsense.entity.dto.PitPageQueryDTO;
+import com.roadsense.entity.pojo.Pit;
+import com.roadsense.entity.vo.PitAmountVO;
+import com.roadsense.entity.vo.PitRepairedVO;
+import com.roadsense.entity.vo.PitTypeCountVO;
+import com.roadsense.entity.vo.PitUnRepairedVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

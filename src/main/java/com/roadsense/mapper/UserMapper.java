@@ -1,6 +1,6 @@
 package com.roadsense.mapper;
 
-import com.roadsense.pojo.User;
+import com.roadsense.entity.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -12,20 +12,27 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
 
-    int deleteByPrimaryKey(Long id);
+    /**
+     * 根据用户名查询
+     * @param username
+     * @return
+     */
+    User getByUsername(String username);
 
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    User selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
-
-    User selectByUserName(String username);
-
-    int updatePassword(User user);
+//    int deleteByPrimaryKey(Long id);
+//
+//    int insert(User record);
+//
+//    int insertSelective(User record);
+//
+//    User selectByPrimaryKey(Long id);
+//
+//    int updateByPrimaryKeySelective(User record);
+//
+//    int updateByPrimaryKey(User record);
+//
+//    User selectByUserName(String username);
+//
+//    int updatePassword(User user);
 
 }

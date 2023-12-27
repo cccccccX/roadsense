@@ -1,8 +1,7 @@
 package com.roadsense.service;
 
-import com.roadsense.pojo.User;
-import com.roadsense.common.result.Result;
-import org.springframework.transaction.annotation.Transactional;
+import com.roadsense.entity.dto.UserLoginDTO;
+import com.roadsense.entity.pojo.User;
 
 /**
  * @author chaochao Xv
@@ -12,13 +11,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
 
-    Result login(User user);
+    /**
+     * 用户登录
+     * @param userLoginDTO
+     */
+    User login(UserLoginDTO userLoginDTO);
 
-    Result checkUserName(String username);
-
-    Result regist(User user);
-
-    @Transactional
-    boolean modifyPassword(User user);
+//    Result login(User user);
+//
+//    Result checkUserName(String username);
+//
+//    Result regist(User user);
+//
+//    @Transactional
+//    boolean modifyPassword(User user);
 
 }

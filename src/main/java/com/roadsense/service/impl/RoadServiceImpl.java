@@ -1,18 +1,18 @@
 package com.roadsense.service.impl;
 
-import com.roadsense.constant.RepairedConstant;
-import com.roadsense.constant.RoadConstant;
-import com.roadsense.dto.RoadHealthyDTO;
-import com.roadsense.dto.RoadPitCountDTO;
-import com.roadsense.dto.RoadRepairedDTO;
+import com.roadsense.common.constant.RepairedConstant;
+import com.roadsense.common.constant.RoadConstant;
+import com.roadsense.entity.dto.RoadHealthyDTO;
+import com.roadsense.entity.dto.RoadPitCountDTO;
+import com.roadsense.entity.dto.RoadRepairedDTO;
 import com.roadsense.mapper.PitMapper;
 import com.roadsense.mapper.RepairMapper;
 import com.roadsense.mapper.RoadMapper;
-import com.roadsense.pojo.Road;
+import com.roadsense.entity.pojo.Road;
 import com.roadsense.service.RoadService;
-import com.roadsense.vo.RoadHealthyVO;
-import com.roadsense.vo.RoadPitCountVO;
-import com.roadsense.vo.RoadRepairedVO;
+import com.roadsense.entity.vo.RoadHealthyVO;
+import com.roadsense.entity.vo.RoadPitCountVO;
+import com.roadsense.entity.vo.RoadRepairedVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

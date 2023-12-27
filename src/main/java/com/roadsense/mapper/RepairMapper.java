@@ -2,9 +2,9 @@ package com.roadsense.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.pagehelper.Page;
-import com.roadsense.dto.RepairPageDTO;
-import com.roadsense.pojo.Repair;
-import com.roadsense.vo.RepairPageVO;
+import com.roadsense.entity.dto.RepairPageDTO;
+import com.roadsense.entity.pojo.Repair;
+import com.roadsense.entity.vo.RepairPageVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

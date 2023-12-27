@@ -57,4 +57,10 @@ public interface PitService {
      * @return
      */
     PageResult pageQuery(PitPageQueryDTO pitPageQueryDTO);
+
+    /**
+     * 坑洼修复
+     * @param pitID
+     */
+    void changeRepairStatus(Integer pitID);
 }

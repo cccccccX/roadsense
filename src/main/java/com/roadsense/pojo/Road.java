@@ -1,5 +1,6 @@
 package com.roadsense.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.io.Serializable;
 //@Data
 @Data
 public class Road{
+    @TableId
     private Long roadId;
 
     private String roadName;

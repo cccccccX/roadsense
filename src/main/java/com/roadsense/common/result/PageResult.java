@@ -11,5 +11,5 @@ import java.util.List;
 @Data
 public class PageResult {
     private Long total;
-    private List data;
+    private List records;
 }

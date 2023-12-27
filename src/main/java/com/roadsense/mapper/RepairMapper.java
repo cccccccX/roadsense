@@ -37,6 +37,13 @@ public interface RepairMapper extends BaseMapper<Repair> {
      */
     List<Integer> getDistinctPitIds();
 
+    /**
+     * 根据坑洼id查找修复记录
+     * @param pitId
+     * @return
+     */
+    Repair selectByPitId(Long id);
+
 //    int deleteByPrimaryKey(Long id);
 //
 //    int insert(Repair record);

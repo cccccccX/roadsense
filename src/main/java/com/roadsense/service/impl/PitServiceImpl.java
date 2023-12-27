@@ -9,6 +9,7 @@ import com.roadsense.dto.PitPageQueryDTO;
 import com.roadsense.mapper.PitMapper;
 import com.roadsense.mapper.RepairMapper;
 import com.roadsense.pojo.Pit;
+import com.roadsense.pojo.Repair;
 import com.roadsense.service.PitService;
 import com.roadsense.vo.PitAmountVO;
 import com.roadsense.vo.PitRepairedVO;
@@ -16,7 +17,9 @@ import com.roadsense.vo.PitTypeCountVO;
 import com.roadsense.vo.PitUnRepairedVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -154,8 +157,44 @@ public class PitServiceImpl implements PitService {
 
         PageResult pageResult = new PageResult();
         pageResult.setTotal(page.getTotal());
-        pageResult.setData(page.getResult());
+        pageResult.setRecords(page.getResult());
 
         return pageResult;
+    }
+
+    /**
+     * 坑洼修复
+     * @param pitID
+     */
+    @Override
+    @Transactional
+    public void changeRepairStatus(Integer pitID) {
+        Pit pit = pitMapper.selectById(pitID);
+        int status = pit.getRepairStatus();
+        int targetStatus = status;
+
+        if (status == 0){
+            //需要插入
+            targetStatus = 1;
+            Repair repair = new Repair();
+            repair.setPitId(pit.getPitId());
+            repair.setRepairState(RepairedConstant.IN_REPAIR);
+            //TODO 这里需要设置一个处理人id, 需要登录拦截用local thread获得
+            repair.setHandleTime(LocalDateTime.now());
+            repairMapper.insert(repair);
+        }else if (status == 1){
+            targetStatus = 2;
+            Repair repair = repairMapper.selectByPitId(pit.getPitId());
+            repair.setRepairState(RepairedConstant.REPAIR_COMPLET);
+            repair.setHandleTime(LocalDateTime.now());
+            repairMapper.updateById(repair);
+        }else{
+            return;
+        }
+
+        pit.setRepairStatus(targetStatus);
+        pitMapper.updateById(pit);
+
+
     }
 }

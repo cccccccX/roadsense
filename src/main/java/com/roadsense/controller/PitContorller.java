@@ -108,4 +108,12 @@ public class PitContorller {
         return Result.ok(pageResult);
     }
 
+    @PutMapping("/{pitID}")
+    @ApiOperation("坑洼修复")
+    public Result changeRepairStatus(@PathVariable Integer pitID){
+        log.info("坑洼修复, {}", pitID);
+        pitService.changeRepairStatus(pitID);
+        return Result.ok(null);
+    }
+
 }

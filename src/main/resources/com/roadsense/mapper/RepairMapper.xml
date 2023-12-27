@@ -32,5 +32,9 @@
         select distinct(pit_id) from t_repair
     </select>
 
+    <select id="selectByPitId" resultMap="BaseResultMap">
+        select * from t_repair where pit_id = #{id}
+    </select>
+
 
 </mapper>

@@ -20,11 +20,15 @@ public class Feedback {
 
     private Long userId;
 
+    private Long roadId;
+
+    private String roadName;
+
     private String fbackImg;
 
     private Date fbackTime;
 
-    private String verifyState;
+    private Integer verifyState;
 
     private Long pitId;
 

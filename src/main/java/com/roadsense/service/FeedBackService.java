@@ -1,5 +1,7 @@
 package com.roadsense.service;
 
+import com.roadsense.common.result.PageResult;
+import com.roadsense.dto.FeedBackPageQueryDTO;
 import com.roadsense.vo.FeedBackSuccessCountVO;
 import com.roadsense.vo.FeedBackUnProcessedVO;
 
@@ -20,4 +22,11 @@ public interface FeedBackService {
      * @return
      */
     FeedBackUnProcessedVO unprocessedCount();
+
+    /**
+     * 反馈记录分页查询
+     * @param feedBackPageQueryDTO
+     * @return
+     */
+    PageResult pageQuery(FeedBackPageQueryDTO feedBackPageQueryDTO);
 }

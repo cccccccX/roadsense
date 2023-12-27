@@ -1,6 +1,8 @@
 package com.roadsense.controller;
 
+import com.roadsense.common.result.PageResult;
 import com.roadsense.common.result.Result;
+import com.roadsense.dto.FeedBackPageQueryDTO;
 import com.roadsense.service.FeedBackService;
 import com.roadsense.vo.FeedBackSuccessCountVO;
 import com.roadsense.vo.FeedBackUnProcessedVO;
@@ -8,9 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * author  Edith
@@ -40,6 +40,14 @@ public class FeedBackController {
         log.info("当前待审核...");
         FeedBackUnProcessedVO feedBackUnProcessedVO = feedBackService.unprocessedCount();
         return Result.ok(feedBackUnProcessedVO);
+    }
+
+    @GetMapping
+    @ApiOperation("反馈记录分页查询")
+    public Result page(FeedBackPageQueryDTO feedBackPageQueryDTO){
+        log.info("反馈记录分页查询, {}", feedBackPageQueryDTO);
+        PageResult pageResult = feedBackService.pageQuery(feedBackPageQueryDTO);
+        return Result.ok(pageResult);
     }
 
 

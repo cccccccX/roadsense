@@ -1,7 +1,10 @@
 package com.roadsense.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.pagehelper.Page;
+import com.roadsense.dto.FeedBackPageQueryDTO;
 import com.roadsense.pojo.Feedback;
+import com.roadsense.vo.FeedBackPageVO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,6 +16,16 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface FeedbackMapper extends BaseMapper<Feedback> {
     Integer countByStatus(Integer status);
+
+
+
+
+    /**
+     * 分页查询带有修复状态
+     * @param feedback
+     * @return
+     */
+    Page<Feedback> list(Feedback feedback);
 
 //    int deleteByPrimaryKey(Long id);
 //

@@ -19,4 +19,19 @@
     </select>
 
 
+    <select id="list" resultMap="BaseResultMap">
+        select * from t_feedback
+        <where>
+            <if test="userId != null">and userId = #{userId}</if>
+            <if test="roadId != null">and road_id = #{roadId}</if>
+            <if test="roadName != null and roadName != ''">and road_name like concat('%', #{roadName}, '%')</if>
+            <if test="desInfo != null and desInfo != ''">and des_info like concat('%', #{desInfo}, '%')</if>
+            <if test="fbackImg != null and fbackImg != ''">and fback_img = #{fbackImg}</if>
+            <if test="fbackTime != null">and fback_time = #{fbackTime}</if>
+            <if test="verifyState != null">and verify_state = #{verifyState}</if>
+            <if test="pitId != null">and pit_id = #{pitId}</if>
+        </where>
+    </select>
+
+
 </mapper>

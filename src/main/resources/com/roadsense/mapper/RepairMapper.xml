@@ -35,6 +35,23 @@
     <select id="selectByPitId" resultMap="BaseResultMap">
         select * from t_repair where pit_id = #{id}
     </select>
+    
+    
+    <select id="pageQuery" resultType="com.roadsense.vo.RepairPageVO">
+        SELECT repair.*, pit.img AS image
+        FROM
+            t_repair AS REPAIR,
+            t_pitinfo AS pit,
+            t_roadinfo AS road
+        <where>
+            repair.pit_id = pit.pit_id
+          AND pit.road_id = road.road_id
+            <if test="roadName != null and roadName != ''">AND road.road_name LIKE concat('%', #{roadName}, '%')</if>
+            <if test="pitId != null">and pit_id = #{pitId}</if>
+            <if test="handlerId != null">and handler_id = #{handlerId}</if>
+            <if test="repairStatus != null">and repair_status = #{repairStatus}</if>
+        </where>
+    </select>
 
 
 </mapper>

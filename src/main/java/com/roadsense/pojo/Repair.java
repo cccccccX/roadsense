@@ -27,5 +27,7 @@ public class Repair{
 
     private LocalDateTime handleTime;
 
+    private LocalDateTime endTime;
+
 
 }

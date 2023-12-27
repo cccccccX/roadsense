@@ -1,7 +1,10 @@
 package com.roadsense.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.pagehelper.Page;
+import com.roadsense.dto.RepairPageDTO;
 import com.roadsense.pojo.Repair;
+import com.roadsense.vo.RepairPageVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -43,6 +46,13 @@ public interface RepairMapper extends BaseMapper<Repair> {
      * @return
      */
     Repair selectByPitId(Long id);
+
+    /**
+     * 维护记录分页查询
+     * @param repairPageDTO
+     * @return
+     */
+    Page<RepairPageVO> pageQuery(RepairPageDTO repairPageDTO);
 
 //    int deleteByPrimaryKey(Long id);
 //

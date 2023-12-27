@@ -186,7 +186,7 @@ public class PitServiceImpl implements PitService {
             targetStatus = 2;
             Repair repair = repairMapper.selectByPitId(pit.getPitId());
             repair.setRepairState(RepairedConstant.REPAIR_COMPLET);
-            repair.setHandleTime(LocalDateTime.now());
+            repair.setEndTime(LocalDateTime.now());
             repairMapper.updateById(repair);
         }else{
             return;

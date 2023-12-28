@@ -50,5 +50,13 @@ public class FeedBackController {
         return Result.ok(pageResult);
     }
 
+    @GetMapping("/myList")
+    @ApiOperation("分页查询我的反馈记录")
+    public Result myList(FeedBackPageQueryDTO feedBackPageQueryDTO){
+        log.info("分页查询我的反馈记录，{}", feedBackPageQueryDTO);
+        PageResult pageResult = feedBackService.myPageList(feedBackPageQueryDTO);
+        return Result.ok(pageResult);
+    }
+
 
 }

@@ -2,6 +2,7 @@ package com.roadsense.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.roadsense.common.context.BaseContext;
 import com.roadsense.common.result.PageResult;
 import com.roadsense.common.constant.FeedBackConstant;
 import com.roadsense.entity.dto.FeedBackPageQueryDTO;
@@ -85,6 +86,25 @@ public class FeedBackServiceImpl implements FeedBackService {
         PageResult pageResult = new PageResult();
         pageResult.setTotal(page.getTotal());
         pageResult.setRecords(feedBackPageVOS);
+        return pageResult;
+    }
+
+    /**
+     * 分页查询我的反馈记录
+     * @param feedBackPageQueryDTO
+     * @return
+     */
+    @Override
+    public PageResult myPageList(FeedBackPageQueryDTO feedBackPageQueryDTO) {
+        feedBackPageQueryDTO.setUserId(BaseContext.getCurrentId());
+        Feedback feedback = new Feedback();
+        BeanUtils.copyProperties(feedBackPageQueryDTO, feedback);
+        PageHelper.startPage(feedBackPageQueryDTO.getPageNum(), feedBackPageQueryDTO.getPageSize());
+        Page<Feedback> page = feedbackMapper.list(feedback);
+
+        PageResult pageResult = new PageResult();
+        pageResult.setTotal(page.getTotal());
+        pageResult.setRecords(page.getResult());
         return pageResult;
     }
 }

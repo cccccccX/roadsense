@@ -29,4 +29,14 @@ public interface FeedBackService {
      * @return
      */
     PageResult pageQuery(FeedBackPageQueryDTO feedBackPageQueryDTO);
+
+
+
+    /**
+     * 分页查询我的反馈记录
+     * @param feedBackPageQueryDTO
+     * @return
+     */
+    PageResult myPageList(FeedBackPageQueryDTO feedBackPageQueryDTO);
+
 }

@@ -22,7 +22,7 @@
     <select id="list" resultMap="BaseResultMap">
         select * from t_feedback
         <where>
-            <if test="userId != null">and userId = #{userId}</if>
+            <if test="userId != null">and user_id = #{userId}</if>
             <if test="roadId != null">and road_id = #{roadId}</if>
             <if test="roadName != null and roadName != ''">and road_name like concat('%', #{roadName}, '%')</if>
             <if test="desInfo != null and desInfo != ''">and des_info like concat('%', #{desInfo}, '%')</if>

@@ -11,5 +11,7 @@ public class MessageContant {
     public static final String PASSWORD_OR_USERNAME_ERROR = "账号或密码错误";
     public static final String USERNAME_REPEAT = "用户名重复";
 
+    public static final String UNKNOW_EXCEPTION = "未知错误信息";
+
 
 }

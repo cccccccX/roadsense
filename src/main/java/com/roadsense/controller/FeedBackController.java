@@ -3,6 +3,7 @@ package com.roadsense.controller;
 import com.roadsense.common.result.PageResult;
 import com.roadsense.common.result.Result;
 import com.roadsense.entity.dto.FeedBackPageQueryDTO;
+import com.roadsense.entity.dto.FeedBackSaveDTO;
 import com.roadsense.service.FeedBackService;
 import com.roadsense.entity.vo.FeedBackSuccessCountVO;
 import com.roadsense.entity.vo.FeedBackUnProcessedVO;
@@ -56,6 +57,14 @@ public class FeedBackController {
         log.info("分页查询我的反馈记录，{}", feedBackPageQueryDTO);
         PageResult pageResult = feedBackService.myPageList(feedBackPageQueryDTO);
         return Result.ok(pageResult);
+    }
+
+    @PostMapping
+    @ApiOperation("提交反馈")
+    public Result save(@RequestBody FeedBackSaveDTO feedBackSaveDTO){
+        log.info("提交反馈记录, {}", feedBackSaveDTO);
+        feedBackService.save(feedBackSaveDTO);
+        return Result.ok(null);
     }
 
 

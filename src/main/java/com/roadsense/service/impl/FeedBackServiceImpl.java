@@ -6,6 +6,7 @@ import com.roadsense.common.context.BaseContext;
 import com.roadsense.common.result.PageResult;
 import com.roadsense.common.constant.FeedBackConstant;
 import com.roadsense.entity.dto.FeedBackPageQueryDTO;
+import com.roadsense.entity.dto.FeedBackSaveDTO;
 import com.roadsense.mapper.FeedbackMapper;
 import com.roadsense.mapper.PitMapper;
 import com.roadsense.entity.pojo.Feedback;
@@ -18,6 +19,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,5 +108,22 @@ public class FeedBackServiceImpl implements FeedBackService {
         pageResult.setTotal(page.getTotal());
         pageResult.setRecords(page.getResult());
         return pageResult;
+    }
+
+
+    /**
+     * 提交反馈
+     * @param feedBackSaveDTO
+     */
+    @Override
+    public void save(FeedBackSaveDTO feedBackSaveDTO) {
+        Feedback feedback = new Feedback();
+        BeanUtils.copyProperties(feedBackSaveDTO, feedback);
+        feedback.setUserId(BaseContext.getCurrentId());
+        //TODO 这里的道路名称需要确定是否有id存在
+        feedback.setFbackTime(LocalDateTime.now());
+
+        feedbackMapper.insert(feedback);
+
     }
 }

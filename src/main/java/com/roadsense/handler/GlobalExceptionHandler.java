@@ -1,5 +1,6 @@
 package com.roadsense.handler;
 
+import com.roadsense.common.constant.MessageContant;
 import com.roadsense.common.result.Result;
 import com.roadsense.common.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,12 @@ public class GlobalExceptionHandler {
     public Result exceptionHandler(BaseException ex){
         log.error("异常信息: {}", ex.getMessage());
         return Result.error(ex.getMessage());
+    }
+
+    @ExceptionHandler
+    public Result exceptionHandler(Exception ex){
+        log.error("未知异常信息: {}", ex.getMessage());
+        return Result.error(MessageContant.UNKNOW_EXCEPTION);
     }
 
 }

@@ -2,6 +2,7 @@ package com.roadsense.service;
 
 import com.roadsense.common.result.PageResult;
 import com.roadsense.entity.dto.FeedBackPageQueryDTO;
+import com.roadsense.entity.dto.FeedBackSaveDTO;
 import com.roadsense.entity.vo.FeedBackSuccessCountVO;
 import com.roadsense.entity.vo.FeedBackUnProcessedVO;
 
@@ -39,4 +40,9 @@ public interface FeedBackService {
      */
     PageResult myPageList(FeedBackPageQueryDTO feedBackPageQueryDTO);
 
+    /**
+     * 提交反馈
+     * @param feedBackSaveDTO
+     */
+    void save(FeedBackSaveDTO feedBackSaveDTO);
 }

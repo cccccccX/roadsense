@@ -1,12 +1,15 @@
 package com.roadsense.service.impl;
 
 import com.roadsense.common.constant.MessageContant;
+import com.roadsense.common.exception.AccountRepeatException;
 import com.roadsense.entity.dto.UserLoginDTO;
 import com.roadsense.common.exception.AccountNotFoundException;
 import com.roadsense.common.exception.LoginFailedException;
+import com.roadsense.entity.dto.UserRegisterDTO;
 import com.roadsense.mapper.UserMapper;
 import com.roadsense.entity.pojo.User;
 import com.roadsense.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -43,6 +46,25 @@ public class UserServiceImpl implements UserService {
 
         throw new LoginFailedException(MessageContant.PASSWORD_OR_USERNAME_ERROR);
 
+    }
+
+
+    /**
+     * 用户注册
+     * @param registerDTO
+     */
+    @Override
+    public void register(UserRegisterDTO registerDTO) {
+        User user = new User();
+        BeanUtils.copyProperties(registerDTO, user);
+        User temp = userMapper.getByUsername(user.getUserName());
+        if (temp != null){
+            throw new AccountRepeatException(MessageContant.USERNAME_REPEAT);
+        }
+        String password = user.getUserPwd();
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        user.setUserPwd(password);
+        userMapper.insert(user);
     }
 
 

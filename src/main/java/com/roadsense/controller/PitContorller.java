@@ -24,7 +24,7 @@ import java.util.List;
  * created  2023/10/31 11:12
  */
 @RestController
-@RequestMapping("/pothole")
+@RequestMapping("/api/pothole")
 @Api(tags = "坑洼相关接口")
 @Slf4j
 public class PitContorller {

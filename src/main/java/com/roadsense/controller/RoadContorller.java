@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * created  2023/10/31 10:25
  */
 @RestController
-@RequestMapping("/road")
+@RequestMapping("/api/road")
 @Api(tags = "道路相关接口")
 @Slf4j
 public class RoadContorller {

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * created  2023/12/27 20:51
  */
 @RestController
-@RequestMapping("/repair")
+@RequestMapping("/api/repair")
 @Slf4j
 @Api(tags = "维护坑洼相关接口")
 public class RepairController {

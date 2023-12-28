@@ -1,5 +1,6 @@
 package com.roadsense.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.roadsense.entity.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
 * @Entity com.roadsense.pojo.User
 */
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 根据用户名查询

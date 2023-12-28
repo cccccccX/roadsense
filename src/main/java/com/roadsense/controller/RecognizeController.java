@@ -21,7 +21,7 @@ import java.util.List;
  * created  2023/10/31 10:00
  */
 @RestController
-@RequestMapping("/recognizes")
+@RequestMapping("/api/recognizes")
 public class RecognizeController {
 
     @Autowired

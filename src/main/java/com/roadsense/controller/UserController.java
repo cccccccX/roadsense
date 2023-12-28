@@ -4,6 +4,7 @@ import com.roadsense.common.constant.JwtClaimsConstant;
 import com.roadsense.common.properties.JwtProperties;
 import com.roadsense.common.util.JwtUtils;
 import com.roadsense.entity.dto.UserLoginDTO;
+import com.roadsense.entity.dto.UserRegisterDTO;
 import com.roadsense.entity.pojo.User;
 import com.roadsense.entity.vo.UserLoginVO;
 import com.roadsense.service.UserService;
@@ -23,7 +24,7 @@ import java.util.Map;
  * @date 2023-10-14 20:34
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @Api(tags = "用户相关接口")
 @Slf4j
 public class UserController {
@@ -126,6 +127,14 @@ public class UserController {
                 .build();
 
         return Result.ok(userLoginVO);
+    }
+
+    @PostMapping("/register")
+    @ApiOperation("用户注册")
+    public Result register(@RequestBody UserRegisterDTO registerDTO){
+        log.info("用户注册, {}", registerDTO);
+        userService.register(registerDTO);
+        return Result.ok(null);
     }
 
 }

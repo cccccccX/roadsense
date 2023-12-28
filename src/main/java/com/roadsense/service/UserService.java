@@ -1,6 +1,7 @@
 package com.roadsense.service;
 
 import com.roadsense.entity.dto.UserLoginDTO;
+import com.roadsense.entity.dto.UserRegisterDTO;
 import com.roadsense.entity.pojo.User;
 
 /**
@@ -16,6 +17,12 @@ public interface UserService {
      * @param userLoginDTO
      */
     User login(UserLoginDTO userLoginDTO);
+
+    /**
+     * 用户注册
+     * @param registerDTO
+     */
+    void register(UserRegisterDTO registerDTO);
 
 //    Result login(User user);
 //

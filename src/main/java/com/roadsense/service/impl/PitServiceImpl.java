@@ -3,6 +3,7 @@ package com.roadsense.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.roadsense.common.context.BaseContext;
 import com.roadsense.common.result.PageResult;
 import com.roadsense.common.constant.RepairedConstant;
 import com.roadsense.entity.dto.PitPageQueryDTO;
@@ -180,6 +181,7 @@ public class PitServiceImpl implements PitService {
             repair.setPitId(pit.getPitId());
             repair.setRepairState(RepairedConstant.IN_REPAIR);
             //TODO 这里需要设置一个处理人id, 需要登录拦截用local thread获得
+            repair.setHandlerId(BaseContext.getCurrentId());
             repair.setHandleTime(LocalDateTime.now());
             repairMapper.insert(repair);
         }else if (status == 1){

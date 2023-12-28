@@ -4,12 +4,14 @@ package com.roadsense.entity.pojo;
 //import lombok.Data;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * @TableName t_user
  */
 @Data
+@TableName("t_user")
 public class User {
     @TableId
     private Long userId;
